@@ -1,421 +1,49 @@
-<!DOCTYPE html>
-
-<html lang="pl"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>Kos Roadbook PRO — Final</title><style>
-:root{--bg:#eef8ff;--card:#fff;--ink:#102033;--muted:#66758a;--blue:#0876d8;--deep:#09223f;--line:#d8e6f0;--amber:#f59e0b;--green:#0e8a55;--red:#d92d20;--shadow:0 14px 38px rgba(8,45,84,.14);--r:26px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#dff7ff,#f7fbff 38%,#f5f7f9);color:var(--ink);line-height:1.38}
-a{color:inherit}.wrap{max-width:980px;margin:auto}.hero{padding:30px 14px 20px;background:radial-gradient(circle at 14% 0%,#6ce4ea,#0876d8 46%,#061f3d);color:white;border-bottom-left-radius:34px;border-bottom-right-radius:34px;box-shadow:var(--shadow)}
-h1{font-size:31px;line-height:1.05;margin:0 0 8px}h2{font-size:21px;margin:0 0 8px}.hero p{margin:8px 0;color:#eafaff}.pill{display:inline-flex;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:7px 10px;margin:4px 4px 0 0;font-size:13px;font-weight:900}
-.nav{position:sticky;top:0;z-index:20;background:rgba(247,251,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:7px 8px;overflow:auto;white-space:nowrap}
-.btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border-radius:15px;padding:10px 12px;margin:4px;font-weight:900;border:1px solid transparent;box-shadow:0 5px 14px rgba(11,63,108,.08);font-size:14px}.debugOnly{display:none}
-button.btn{font-family:inherit;cursor:pointer}.primary{background:var(--blue);color:white}.dark{background:var(--deep);color:white}.soft{background:white;border-color:var(--line);color:var(--ink)}.amber{background:var(--amber);color:white}.green{background:var(--green);color:white}.red{background:var(--red);color:white}
-.card{background:rgba(255,255,255,.985);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:12px;box-shadow:var(--shadow)}.muted{color:var(--muted)}.tiny{font-size:13px;color:var(--muted)}.warn{border-left:6px solid var(--amber);background:#fff9ec}.danger{border-left:6px solid var(--red);background:#fff4f2}.ok{border-left:6px solid var(--green);background:#ecfdf5}
-.smart{position:sticky;top:58px;z-index:15;border-left:6px solid var(--blue);background:#f0f8ff;transition:.25s ease;padding:13px 14px}
-.smartHead{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.smartHead h2{margin:0}
-.smartToggle{min-width:44px;padding:8px 10px}
-.smartBody{overflow:hidden;transition:max-height .25s ease, opacity .2s ease;max-height:640px;opacity:1}
-.smart.collapsed{padding:12px 14px}
-.smart.collapsed .smartBody{max-height:0;opacity:0}
-.smart.collapsed .status{font-size:15px}
-.smartMini{display:none;margin-top:6px;font-weight:900;color:var(--blue)}
-.smart.collapsed .smartMini{display:block}
-.status{font-size:17px;font-weight:950}.advice{margin-top:6px;font-weight:800}
-.progress{height:10px;background:#d9edf8;border-radius:999px;overflow:hidden;margin-top:12px}.bar{height:100%;background:linear-gradient(90deg,#0876d8,#00a6c7,#f59e0b);width:0%}
-.timeline{position:relative}.timeline:before{content:"";position:absolute;left:30px;top:0;bottom:0;width:3px;background:linear-gradient(var(--blue),#00a6c7,var(--amber));border-radius:9px}.stop{position:relative;margin:10px 12px;padding:15px 14px 15px 58px}.bubble{position:absolute;left:8px;top:16px;width:45px;height:45px;border-radius:15px;background:white;border:3px solid var(--blue);display:grid;place-items:center;font-weight:950;color:var(--blue)}
-.title{font-size:20px;font-weight:950;line-height:1.15}.tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.tag{border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}.main{background:#eaf4ff;color:#07539b}.bonus{background:#fff4da;color:#8a4b00}.visitedBadge{display:none;background:#ecfdf5;color:#05603a;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}.unvisitedBadge{display:inline-flex;background:#eef4ff;color:#07539b;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}
-.timebox{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:11px 0}.timeitem{background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:10px;text-align:center}.timeitem b{display:block;font-size:17px}.timeitem span{font-size:12px;color:var(--muted)}
-.actions{display:flex;flex-wrap:wrap}.section{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}details{background:#f8fbff;border:1px solid var(--line);border-radius:17px;padding:12px;margin-top:12px}summary{font-weight:950;cursor:pointer}.foodwrap{display:grid;grid-template-columns:1fr;gap:8px}.food{background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:11px}.food b{display:block}.food span{font-size:13px;color:var(--muted)}.subroute{background:#f7fbff;border:1px solid var(--line);border-radius:18px;padding:12px;margin-top:12px}.subroute ol{margin:8px 0 0 20px;padding:0}.subroute li{margin:6px 0}.subrouteTitle{font-weight:950;font-size:16px}.miniTime{display:inline-flex;background:#eef4ff;color:#07539b;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950;margin-left:4px}
-.cutgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.box{background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:12px}.active{outline:3px solid rgba(8,118,216,.35)}.visited{opacity:.72}.visited .bubble{border-color:var(--green);color:var(--green)}.autoSkip{opacity:.48}.autoSkip .bubble{border-color:var(--red);color:var(--red)}.autoSkipNotice{display:none;background:#fff4f2;color:#a32116;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}.autoSkip .autoSkipNotice{display:inline-flex}.visited .visitedBadge{display:inline-flex}.visited .unvisitedBadge{display:none}.checkBtn.done{background:var(--green);color:white}
-.footer{text-align:center;padding:28px 16px;color:var(--muted);font-size:13px}
-@media(max-width:760px){h1{font-size:27px}.card{margin:10px 8px;padding:14px}.stop{padding-left:55px}.btn{padding:10px 11px}.title{font-size:19px}.cutgrid,.timebox{grid-template-columns:1fr}.smart{top:54px}}
-.parkingTarget{display:inline-flex;background:#ecfdf5;color:#05603a;border:1px solid #b7e4c7;border-radius:999px;padding:7px 10px;margin:6px 0 10px 0;font-size:13px;font-weight:950}
-</style></head><body>
-<header class="hero"><div class="wrap"><h1>🏝️ Kos Roadbook PRO</h1>
-<p><b>Kos w 1 dzień:</b> trasa prowadzi samochodem na parkingi, a potem pieszo po punktach w dobrej kolejności.</p>
-<span class="pill">🚗 1 dzień</span><span class="pill">📍 Smart GPS</span><span class="pill">🌅 Finał: Zia</span>
-<div style="margin-top:12px"><a class="btn dark" href="https://www.google.com/maps/dir/Mitsis+Ramira+Beach+Hotel+parking+Kos/Therma+Beach+parking+Kos/Asklepion+Kos+parking/Kos+Harbour+parking/Traditional+Windmill+of+Antimachia+parking+Kos/Plaka+Forest+parking+Kos/Agios+Stefanos+Beach+parking+Kos/Camel+Beach+parking+Kos/Paradise+Beach+parking+Kos/Limnionas+Bay+parking+Kos/Kefalos+Castle+parking+Kos/Mylotopi+Kefalos+parking+Kos/Paleo+Pyli+parking+Kos/Zia+parking+Kos">🚗 Start trasy</a><a class="btn green" href="https://www.google.com/maps/dir/Mitsis+Ramira+Beach+Hotel+parking+Kos/Therma+Beach+parking+Kos/Asklepion+Kos+parking/Kos+Harbour+parking/Agios+Stefanos+Beach+parking+Kos/Mylotopi+Kefalos+parking+Kos/Zia+parking+Kos">⚡ Skrócona</a></div><div class="progress"><div class="bar" id="bar"></div></div></div></header>
-<nav class="nav"><div class="wrap"><a class="btn primary" href="https://www.google.com/maps/dir/Mitsis+Ramira+Beach+Hotel+parking+Kos/Therma+Beach+parking+Kos/Asklepion+Kos+parking/Kos+Harbour+parking/Traditional+Windmill+of+Antimachia+parking+Kos/Plaka+Forest+parking+Kos/Agios+Stefanos+Beach+parking+Kos/Camel+Beach+parking+Kos/Paradise+Beach+parking+Kos/Limnionas+Bay+parking+Kos/Kefalos+Castle+parking+Kos/Mylotopi+Kefalos+parking+Kos/Paleo+Pyli+parking+Kos/Zia+parking+Kos">Trasa</a><a class="btn soft" href="#smart">Smart</a><a class="btn soft" href="#plan">Plan</a><a class="btn soft" href="#cut">Plan B</a></div></nav>
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kos Roadbook PRO — 29.06.2026</title>
+<meta name="theme-color" content="#0876d8">
+<style>
+:root{--bg:#eef8ff;--card:#fff;--ink:#102033;--muted:#66758a;--blue:#0876d8;--deep:#09223f;--line:#d8e6f0;--amber:#f59e0b;--green:#0e8a55;--red:#d92d20;--shadow:0 14px 38px rgba(8,45,84,.14);--r:24px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#dff7ff,#f7fbff 38%,#f5f7f9);color:var(--ink);line-height:1.38}a{color:inherit}.wrap{max-width:980px;margin:auto}.hero{padding:30px 14px 20px;background:radial-gradient(circle at 14% 0%,#6ce4ea,#0876d8 46%,#061f3d);color:white;border-bottom-left-radius:34px;border-bottom-right-radius:34px;box-shadow:var(--shadow)}h1{font-size:31px;line-height:1.05;margin:0 0 8px}h2{font-size:21px;margin:0 0 8px}.hero p{margin:8px 0;color:#eafaff}.pill{display:inline-flex;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:7px 10px;margin:4px 4px 0 0;font-size:13px;font-weight:900}.nav{position:sticky;top:0;z-index:20;background:rgba(247,251,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:7px 8px;overflow:auto;white-space:nowrap}.btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border-radius:15px;padding:10px 12px;margin:4px;font-weight:900;border:1px solid transparent;box-shadow:0 5px 14px rgba(11,63,108,.08);font-size:14px}button.btn{font-family:inherit;cursor:pointer}.primary{background:var(--blue);color:white}.dark{background:var(--deep);color:white}.soft{background:white;border-color:var(--line);color:var(--ink)}.amber{background:var(--amber);color:white}.green{background:var(--green);color:white}.red{background:var(--red);color:white}.card{background:rgba(255,255,255,.985);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:12px;box-shadow:var(--shadow)}.muted{color:var(--muted)}.tiny{font-size:13px;color:var(--muted)}.warn{border-left:6px solid var(--amber);background:#fff9ec}.danger{border-left:6px solid var(--red);background:#fff4f2}.ok{border-left:6px solid var(--green);background:#ecfdf5}.smart{position:sticky;top:58px;z-index:15;border-left:6px solid var(--blue);background:#f0f8ff;transition:.25s ease;padding:13px 14px}.smartHead{display:flex;align-items:center;justify-content:space-between;gap:10px}.smartHead h2{margin:0}.smartToggle{min-width:44px;padding:8px 10px}.smartBody{overflow:hidden;transition:max-height .25s ease,opacity .2s ease;max-height:780px;opacity:1}.smart.collapsed .smartBody{max-height:0;opacity:0}.status{font-size:17px;font-weight:950}.advice{margin-top:6px;font-weight:800}.progress{height:10px;background:#d9edf8;border-radius:999px;overflow:hidden;margin-top:12px}.bar{height:100%;background:linear-gradient(90deg,#0876d8,#00a6c7,#f59e0b);width:0%}.timeline{position:relative}.timeline:before{content:"";position:absolute;left:30px;top:0;bottom:0;width:3px;background:linear-gradient(var(--blue),#00a6c7,var(--amber));border-radius:9px}.stop{position:relative;margin:10px 12px;padding:15px 14px 15px 58px}.bubble{position:absolute;left:8px;top:16px;width:45px;height:45px;border-radius:15px;background:white;border:3px solid var(--blue);display:grid;place-items:center;font-weight:950;color:var(--blue)}.title{font-size:20px;font-weight:950;line-height:1.15}.tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.tag{border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}.main{background:#eaf4ff;color:#07539b}.bonus{background:#fff4da;color:#8a4b00}.visitedBadge{display:none;background:#ecfdf5;color:#05603a;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}.unvisitedBadge{display:inline-flex;background:#eef4ff;color:#07539b;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}.skipBadge{display:none;background:#fff4f2;color:#a32116;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}.timebox{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:11px 0}.timeitem{background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:10px;text-align:center}.timeitem b{display:block;font-size:17px}.timeitem span{font-size:12px;color:var(--muted)}.actions{display:flex;flex-wrap:wrap}.section{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}details{background:#f8fbff;border:1px solid var(--line);border-radius:17px;padding:12px;margin-top:12px}summary{font-weight:950;cursor:pointer}.subroute{background:#f7fbff;border:1px solid var(--line);border-radius:18px;padding:12px;margin-top:12px}.subroute ol{margin:8px 0 0 20px;padding:0}.subroute li{margin:6px 0}.miniTime{display:inline-flex;background:#eef4ff;color:#07539b;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950;margin-left:4px}.parkingTarget{display:inline-flex;background:#ecfdf5;color:#05603a;border:1px solid #b7e4c7;border-radius:999px;padding:7px 10px;margin:6px 0 10px 0;font-size:13px;font-weight:950}.active{outline:3px solid rgba(8,118,216,.35)}.visited{opacity:.72}.visited .bubble{border-color:var(--green);color:var(--green)}.visited .visitedBadge{display:inline-flex}.visited .unvisitedBadge{display:none}.autoSkip{opacity:.48}.autoSkip .bubble{border-color:var(--red);color:var(--red)}.autoSkip .skipBadge{display:inline-flex}.autoSkip .unvisitedBadge{display:none}.checkBtn.done{background:var(--green);color:white}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.box{background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:12px}.footer{text-align:center;padding:28px 16px;color:var(--muted);font-size:13px}@media(max-width:760px){h1{font-size:27px}.card{margin:10px 8px;padding:14px}.stop{padding-left:55px}.btn{padding:10px 11px}.title{font-size:19px}.grid,.timebox{grid-template-columns:1fr}.smart{top:54px}}
+</style>
+</head><body>
+<header class="hero"><div class="wrap"><h1>🏝️ Kos Roadbook PRO</h1><p><b>Plan produkcyjny na 29.06.2026:</b> zwiedzanie od 10:00 do 22:00, z inteligentnym pomijaniem bonusów.</p><span class="pill">🚗 Auto do 22:00</span><span class="pill">⭐ MAIN + BONUS</span><span class="pill">🌄 Finał: Zia</span><div style="margin-top:12px"><a class="btn dark" id="fullRouteTop" target="_blank">🚗 Pełna trasa</a><a class="btn green" id="mainRouteTop" target="_blank">⚡ Tylko MAIN</a></div><div class="progress"><div class="bar" id="bar"></div></div></div></header>
+<nav class="nav"><div class="wrap"><a class="btn primary" href="#smart">Smart</a><a class="btn soft" href="#plan">Plan</a><a class="btn soft" href="#rules">Zasady</a><a class="btn soft" id="routeNav" target="_blank">Google Maps</a></div></nav>
 <main class="wrap">
-<section class="card smart" id="smart"><div class="smartHead"><h2>🧠 Następny krok</h2><button class="btn soft smartToggle" id="smartToggle" type="button">−</button></div>
-<div class="status" id="status">Ładuję...</div><div class="smartMini" id="smartMini">Dotknij, aby rozwinąć panel Smart</div>
-<div class="smartBody" id="smartBody"><div class="muted" id="substatus">Auto wybór działa automatycznie.</div><div class="advice" id="advice"></div>
-<div class="actions">
-<button class="btn primary" id="gpsBtn" type="button">📍 GPS</button>
-<button class="btn soft" id="timeBtn" type="button">⏱️ Czas</button><button class="btn amber" id="autoBtn" type="button">🧠 Auto</button>
-<button class="btn soft debugOnly" id="debugBtn" type="button">🧪 Debug</button>
-<button class="btn red" id="resetBtn" type="button">🗑️ Reset</button>
-<a class="btn amber" href="https://www.google.com/maps/dir/Mitsis+Ramira+Beach+Hotel+Kos/Therma+Beach+Kos/Asklepion+Kos/Kos+Town/Antimachia+Windmill+Kos/Plaka+Forest+Kos/Agios+Stefanos+Beach+Kos/Camel+Beach+Kos/Paradise+Beach+Kos/Limnionas+Bay+Kos/Kefalos+Castle+Kos/Mylotopi+Kefalos+Kos/Paleo+Pyli+Kos/Zia+Kos" id="nextBtn">🚗 Nawiguj dalej</a>
-</div><pre id="debug" style="display:none;white-space:pre-wrap;background:#0b1b2b;color:#dff7ff;border-radius:16px;padding:12px;margin-top:10px;font-size:12px;overflow:auto"></pre></div></section>
-<section class="timeline" id="plan">
-<article class="card stop" data-arr="07:50" data-dep="08:05" data-lat="36.8747" data-lon="27.3309" data-minstay="0" data-must="1" data-priority="100" data-step="0" id="stop0">
-<div class="bubble">0</div><div class="title">🏨 Mitsis Ramira / Psalidi</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag main">MAIN</span><span class="tag main">15 min</span></div>
-<div class="timebox"><div class="timeitem"><b>07:50</b><span>przyjazd</span></div><div class="timeitem"><b>15 min</b><span>na miejscu</span></div><div class="timeitem"><b>08:05</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Start dnia. Przygotuj wodę, ręczniki, strój, buty do wody i powerbank.</p><div class="parkingTarget">🎯 Cel samochodem: parking hotelowy</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Mitsis+Ramira+Beach+Hotel+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Mitsis+Ramira+Beach+Hotel+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Mitsis+Ramira+Beach+Hotel+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Mitsis+Ramira+Beach+Hotel+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Psalidi to wygodna baza wypadowa po wschodniej stronie Kos. Jesteście blisko miasta Kos, Asklepionu i gorących źródeł Therma.</p></details>
-<div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Kos Marina Cafe</b><span>kawa na start</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kos+Marina+Cafe+Kos">Otwórz w Maps</a></div><div class="food"><b>Agios Fokas Beach Club</b><span>napój po drodze</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Agios+Fokas+Beach+Club+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Wyjedź punktualnie.</span></div></article>
-<article class="card stop" data-arr="08:20" data-dep="09:05" data-lat="36.8564" data-lon="27.3557" data-minstay="20" data-must="1" data-priority="95" data-step="1" id="stop1">
-<div class="bubble">1</div><div class="title">♨️ Therma Beach</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag main">MAIN</span><span class="tag main">45 min</span></div>
-<div class="timebox"><div class="timeitem"><b>08:20</b><span>przyjazd</span></div><div class="timeitem"><b>45 min</b><span>na miejscu</span></div><div class="timeitem"><b>09:05</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Gorące źródła wpadające do morza. Najlepsze rano.</p><div class="parkingTarget">🎯 Cel samochodem: parking nad zejściem</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Therma+Beach+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Therma+Beach+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Therma+Beach+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Agios+Fokas+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Therma Beach / Embros Therme jest związana z aktywnością geotermalną regionu Dodekanezu. Ciepła woda miesza się tu z morzem.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Plan na miejscu — Therma<span class="miniTime">30–45 min</span></div><a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=Therma+Beach+parking+Kos">📍 Otwórz punkt startowy</a><ol><li><b>Parking nad zejściem</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Therma+Beach+parking+Kos">Maps</a></li><li><b>Foto z drogi nad zatoką</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Therma+Beach+viewpoint+Kos">Maps</a></li><li><b>Zejście do basenu termalnego</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Therma+Beach+Kos">Maps</a></li></ol><div class="tiny">💡 Google może prowadzić tylko ogólnie do plaży. Po zaparkowaniu schodzisz drogą/ścieżką w dół do zatoki.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Agios Fokas Beach Club</b><span>najbliższa opcja</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Agios+Fokas+Beach+Club+Kos">Otwórz w Maps</a></div><div class="food"><b>Mediterraneo</b><span>spokojniejsza opcja</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Mediterraneo+Restaurant+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Buty do wody pomagają. Najlepsze zdjęcie z drogi nad zatoką.</span></div></article>
-<article class="card stop" data-arr="09:35" data-dep="10:55" data-lat="36.8939" data-lon="27.2566" data-minstay="45" data-must="1" data-priority="98" data-step="2" id="stop2">
-<div class="bubble">2</div><div class="title">🏛️ Asklepion</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag main">MAIN</span><span class="tag main">80 min</span></div>
-<div class="timebox"><div class="timeitem"><b>09:35</b><span>przyjazd</span></div><div class="timeitem"><b>80 min</b><span>na miejscu</span></div><div class="timeitem"><b>10:55</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Najważniejszy zabytek Kos i historia medycyny.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy wejściu</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Asklepion+Kos+parking">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Asklepion+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Asklepion+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Asklepion+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Asklepion był antycznym sanktuarium leczniczym Asklepiosa. Kos kojarzy się z Hipokratesem, a tarasy pokazują związek religii, natury i leczenia.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Plan na miejscu — Asklepion<span class="miniTime">60–80 min</span></div><a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=Asklepion+Kos+parking">📍 Otwórz punkt startowy</a><ol><li><b>Wejście / kasa</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Asklepion+Kos+entrance">Maps</a></li><li><b>Najpierw najwyższy taras</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Asklepion+Kos">Maps</a></li><li><b>Potem środkowy taras</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Asklepion+Kos">Maps</a></li><li><b>Na końcu dolny taras i wyjście</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Asklepion+Kos">Maps</a></li></ol><div class="tiny">💡 Nie używaj tu pieszej nawigacji Google — prowadzi dziwnie, bo tarasy nie są osobnymi punktami w Maps. Idź według kolejności z listy.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Broadway</b><span>szybki lunch później</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Broadway+Restaurant+Kos">Otwórz w Maps</a></div><div class="food"><b>More Cafe Bar</b><span>kawa/deser</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=More+Cafe+Bar+Kos+Town">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Najpierw najwyższy taras i widok.</span></div></article>
-<article class="card stop" data-arr="11:15" data-dep="12:20" data-lat="36.8926" data-lon="27.2877" data-minstay="35" data-must="0" data-priority="78" data-step="3" id="stop3">
-<div class="bubble">3</div><div class="title">⚓ Kos Town</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag main">MAIN</span><span class="tag main">65 min</span></div>
-<div class="timebox"><div class="timeitem"><b>11:15</b><span>przyjazd</span></div><div class="timeitem"><b>65 min</b><span>na miejscu</span></div><div class="timeitem"><b>12:20</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Port, zamek, Drzewo Hipokratesa i stare miasto.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy porcie</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Kos+Harbour+parking">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kos+Town+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kos+Town+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Kos+Town+center">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Kos Town ma warstwy starożytne, rzymskie, joannickie i włoskie. Warto zobaczyć port, zamek Neratzia i okolice Agory.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Mini-trasa piesza — Kos Town<span class="miniTime">45–65 min</span></div><a class="btn primary" href="https://www.google.com/maps/dir/Kos+Harbour+parking/Kos+Harbour/Neratzia+Castle+Kos/Plane+Tree+of+Hippocrates+Kos/Ancient+Agora+Kos/Kos+Old+Town/?travelmode=walking">🚶 Otwórz trasę pieszą</a><ol><li><b>Parking przy porcie</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kos+Harbour+parking">Maps</a></li><li><b>Port Kos</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kos+Harbour">Maps</a></li><li><b>Zamek Neratzia</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Neratzia+Castle+Kos">Maps</a></li><li><b>Drzewo Hipokratesa</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Plane+Tree+of+Hippocrates+Kos">Maps</a></li><li><b>Agora</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Ancient+Agora+Kos">Maps</a></li><li><b>Stare Miasto</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kos+Old+Town">Maps</a></li></ol><div class="tiny">💡 Tu piesza trasa ma sens, bo punkty są realnymi miejscami w Google Maps.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Broadway</b><span>najlepszy szybki lunch</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Broadway+Restaurant+Kos">Otwórz w Maps</a></div><div class="food"><b>Barbouni</b><span>owoce morza</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Barbouni+Kos">Otwórz w Maps</a></div><div class="food"><b>Albergo Gelsomino</b><span>premium widok</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Albergo+Gelsomino+Kos+restaurant">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Zaparkuj raz i idź pieszo.</span></div></article>
-<article class="card stop" data-arr="12:40" data-dep="13:00" data-lat="36.814" data-lon="27.0978" data-minstay="12" data-must="0" data-priority="45" data-step="4" id="stop4">
-<div class="bubble">4</div><div class="title">🌾 Antimachia Windmill</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag main">MAIN</span><span class="tag main">20 min</span></div>
-<div class="timebox"><div class="timeitem"><b>12:40</b><span>przyjazd</span></div><div class="timeitem"><b>20 min</b><span>na miejscu</span></div><div class="timeitem"><b>13:00</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Krótki grecki foto-stop po drodze na zachód.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy wiatraku</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Traditional+Windmill+of+Antimachia+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Antimachia+Windmill+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Antimachia+Windmill+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Antimachia+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Antimachia ma bardziej lokalny, wiejski klimat niż kurortowe wybrzeże.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Po zaparkowaniu<span class="miniTime">pieszo</span></div><a class="btn primary" href="https://www.google.com/maps/dir/Traditional+Windmill+of+Antimachia+parking+Kos/Traditional+Windmill+of+Antimachia+Kos/?travelmode=walking">🚶 Otwórz trasę pieszą</a><ol><li><b>Parking przy wiatraku</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Traditional+Windmill+of+Antimachia+parking+Kos">Maps</a></li><li><b>Wiatrak Antimachia</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Traditional+Windmill+of+Antimachia+Kos">Maps</a></li></ol><div class="tiny">💡 Auto zostawiasz na wskazanym parkingu, a dalej idziesz punktami w tej kolejności.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Traditional cafe Antimachia</b><span>lokalny klimat</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=traditional+cafe+Antimachia+Kos">Otwórz w Maps</a></div><div class="food"><b>Kefalos restaurants</b><span>lepszy lunch później</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=restaurants+Kefalos+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Jeśli jesteście spóźnieni, pomiń i jedź prosto na Agios Stefanos.</span></div></article>
-<article class="card stop" data-arr="13:05" data-dep="13:25" data-lat="36.7895" data-lon="27.0825" data-minstay="20" data-must="0" data-priority="35" data-step="5" id="stop5">
-<div class="bubble">B1</div><div class="title">🦚 Plaka Forest</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag bonus">BONUS</span><span class="tag bonus">20 min</span></div>
-<div class="timebox"><div class="timeitem"><b>13:05</b><span>przyjazd</span></div><div class="timeitem"><b>20 min</b><span>na miejscu</span></div><div class="timeitem"><b>13:25</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Cień, pawie i odpoczynek od plaż.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy wejściu do lasu</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Plaka+Forest+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Plaka+Forest+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Plaka+Forest+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Antimachia+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Plaka Forest to zielony przerywnik w suchym krajobrazie Kos, lubiany za pawie i cień.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Po zaparkowaniu<span class="miniTime">pieszo</span></div><a class="btn primary" href="https://www.google.com/maps/dir/Plaka+Forest+parking+Kos/Plaka+Forest+Kos/?travelmode=walking">🚶 Otwórz trasę pieszą</a><ol><li><b>Parking Plaka</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Plaka+Forest+parking+Kos">Maps</a></li><li><b>Las z pawiami</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Plaka+Forest+Kos">Maps</a></li></ol><div class="tiny">💡 Auto zostawiasz na wskazanym parkingu, a dalej idziesz punktami w tej kolejności.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Kefalos restaurants</b><span>jedz później</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=restaurants+Kefalos+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Pomiń przy każdym opóźnieniu powyżej 15 min.</span></div></article>
-<article class="card stop" data-arr="13:45" data-dep="15:20" data-lat="36.7458" data-lon="26.9598" data-minstay="80" data-must="1" data-priority="100" data-step="6" id="stop6">
-<div class="bubble">5</div><div class="title">🏖️ Agios Stefanos + Kastri</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag main">MAIN</span><span class="tag main">95 min</span></div>
-<div class="timebox"><div class="timeitem"><b>13:45</b><span>przyjazd</span></div><div class="timeitem"><b>95 min</b><span>na miejscu</span></div><div class="timeitem"><b>15:20</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Najbardziej pocztówkowa plaża Kos.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy plaży</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Agios+Stefanos+Beach+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Agios+Stefanos+Beach+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Agios+Stefanos+Beach+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Agios+Stefanos+Beach+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Przy plaży są pozostałości wczesnochrześcijańskiej bazyliki. Wysepka Kastri tworzy najbardziej rozpoznawalny kadr tej części wyspy.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Plan na miejscu — Agios Stefanos<span class="miniTime">25–40 min + kąpiel</span></div><a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=Agios+Stefanos+Beach+parking+Kos">📍 Otwórz punkt startowy</a><ol><li><b>Parking przy plaży</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Agios+Stefanos+Beach+parking+Kos">Maps</a></li><li><b>Ruiny bazyliki</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Agios+Stefanos+Basilica+Kos">Maps</a></li><li><b>Kadr na wysepkę Kastri</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Agios+Stefanos+Beach+Kos">Maps</a></li><li><b>Kąpiel / plaża</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Agios+Stefanos+Beach+Kos">Maps</a></li></ol><div class="tiny">💡 Najpierw ruiny i zdjęcia, potem kąpiel. Google nie potrzebuje osobnej trasy pieszej po piasku.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Antonios Beach Restaurant</b><span>przy plaży</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Antonios+Restaurant+Kefalos+Kos">Otwórz w Maps</a></div><div class="food"><b>Hippocrates Restaurant</b><span>plan B</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Hippocrates+Restaurant+Kefalos+Kos">Otwórz w Maps</a></div><div class="food"><b>Camel Fish Restaurant</b><span>ryby/owoce morza</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Camel+Fish+Restaurant+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Najpierw zdjęcia z ruin, potem kąpiel.</span></div></article>
-<article class="card stop" data-arr="15:25" data-dep="15:40" data-lat="36.741" data-lon="26.946" data-minstay="15" data-must="0" data-priority="50" data-step="7" id="stop7">
-<div class="bubble">B2</div><div class="title">🏝️ Camel Beach</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag bonus">BONUS</span><span class="tag bonus">15 min</span></div>
-<div class="timebox"><div class="timeitem"><b>15:25</b><span>przyjazd</span></div><div class="timeitem"><b>15 min</b><span>na miejscu</span></div><div class="timeitem"><b>15:40</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Mniej oczywista plaża obok Paradise.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy zejściu</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Camel+Beach+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Camel+Beach+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Camel+Beach+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Camel+Beach+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Camel Beach jest alternatywą dla popularniejszego Paradise Beach.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Po zaparkowaniu<span class="miniTime">pieszo</span></div><a class="btn primary" href="https://www.google.com/maps/dir/Camel+Beach+parking+Kos/Camel+Beach+Kos/?travelmode=walking">🚶 Otwórz trasę pieszą</a><ol><li><b>Parking Camel Beach</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Camel+Beach+parking+Kos">Maps</a></li><li><b>Zejście na plażę</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Camel+Beach+Kos">Maps</a></li></ol><div class="tiny">💡 Auto zostawiasz na wskazanym parkingu, a dalej idziesz punktami w tej kolejności.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Camel Fish Restaurant</b><span>najbliższa opcja</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Camel+Fish+Restaurant+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Wybierz Camel albo Paradise, jeśli czas zaczyna uciekać.</span></div></article>
-<article class="card stop" data-arr="15:45" data-dep="16:05" data-lat="36.7446" data-lon="26.9496" data-minstay="20" data-must="0" data-priority="52" data-step="8" id="stop8">
-<div class="bubble">6</div><div class="title">🌊 Paradise Beach</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag main">MAIN</span><span class="tag main">20 min</span></div>
-<div class="timebox"><div class="timeitem"><b>15:45</b><span>przyjazd</span></div><div class="timeitem"><b>20 min</b><span>na miejscu</span></div><div class="timeitem"><b>16:05</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Krótka kąpiel i turkusowa woda.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy plaży</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Paradise+Beach+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Paradise+Beach+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Paradise+Beach+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Paradise+Beach+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Popularna piaszczysta plaża południowo-zachodniego Kos, dobra na szybki reset.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Po zaparkowaniu<span class="miniTime">pieszo</span></div><a class="btn primary" href="https://www.google.com/maps/dir/Paradise+Beach+parking+Kos/Paradise+Beach+Kos/?travelmode=walking">🚶 Otwórz trasę pieszą</a><ol><li><b>Parking Paradise</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Paradise+Beach+parking+Kos">Maps</a></li><li><b>Plaża Paradise</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Paradise+Beach+Kos">Maps</a></li></ol><div class="tiny">💡 Auto zostawiasz na wskazanym parkingu, a dalej idziesz punktami w tej kolejności.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Paradise Beach Bar</b><span>szybki napój</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Paradise+Beach+Kos+beach+bar">Otwórz w Maps</a></div><div class="food"><b>Camel Fish Restaurant</b><span>lepsze jedzenie</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Camel+Fish+Restaurant+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Pierwszy punkt do wycięcia przy opóźnieniu.</span></div></article>
-<article class="card stop" data-arr="16:20" data-dep="16:40" data-lat="36.768" data-lon="26.916" data-minstay="25" data-must="0" data-priority="40" data-step="9" id="stop9">
-<div class="bubble">B3</div><div class="title">🌅 Limnionas Bay</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag bonus">BONUS</span><span class="tag bonus">20 min</span></div>
-<div class="timebox"><div class="timeitem"><b>16:20</b><span>przyjazd</span></div><div class="timeitem"><b>20 min</b><span>na miejscu</span></div><div class="timeitem"><b>16:40</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Piękna zatoka, ale czasochłonny zjazd.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy zatoce</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Limnionas+Bay+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Limnionas+Bay+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Limnionas+Bay+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Kefalos+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Limnionas to spokojniejsza zatoka na zachodzie. Piękna, lecz logistycznie mniej efektywna przy jednym dniu.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Po zaparkowaniu<span class="miniTime">pieszo</span></div><a class="btn primary" href="https://www.google.com/maps/dir/Limnionas+Bay+parking+Kos/Limnionas+Bay+Kos/Limnionas+Tavern+Kos/?travelmode=walking">🚶 Otwórz trasę pieszą</a><ol><li><b>Parking Limnionas</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Limnionas+Bay+parking+Kos">Maps</a></li><li><b>Zatoka Limnionas</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Limnionas+Bay+Kos">Maps</a></li><li><b>Tawerna / widok</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Limnionas+Tavern+Kos">Maps</a></li></ol><div class="tiny">💡 Auto zostawiasz na wskazanym parkingu, a dalej idziesz punktami w tej kolejności.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Limnionas Tavern</b><span>najbliżej zatoki</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Limnionas+Tavern+Kos">Otwórz w Maps</a></div><div class="food"><b>Maistrali Kefalos</b><span>lepszy wybór dalej</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Maistrali+Restaurant+Kefalos+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Tylko jeśli jesteście przed planem.</span></div></article>
-<article class="card stop" data-arr="16:50" data-dep="17:05" data-lat="36.7483" data-lon="26.957" data-minstay="15" data-must="0" data-priority="38" data-step="10" id="stop10">
-<div class="bubble">B4</div><div class="title">🏰 Kefalos Castle Viewpoint</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag bonus">BONUS</span><span class="tag bonus">15 min</span></div>
-<div class="timebox"><div class="timeitem"><b>16:50</b><span>przyjazd</span></div><div class="timeitem"><b>15 min</b><span>na miejscu</span></div><div class="timeitem"><b>17:05</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Szybki punkt widokowy na Kefalos.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy podejściu</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Kefalos+Castle+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kefalos+Castle+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kefalos+Castle+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Kefalos+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Ruiny zamku Kefalos przypominają o średniowiecznej historii zachodniej części wyspy.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Plan na miejscu — Kefalos Castle<span class="miniTime">15–25 min</span></div><a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=Kefalos+Castle+Kos">📍 Otwórz punkt startowy</a><ol><li><b>Parking / start</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kefalos+Castle+Kos">Maps</a></li><li><b>Ruiny zamku</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kefalos+Castle+Kos">Maps</a></li><li><b>Kadr na zatokę</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Kefalos+Castle+Kos">Maps</a></li></ol><div class="tiny">💡 Krótki foto-stop. Google może rozpoznawać wszystko jako jeden punkt — to normalne.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Mylotopi</b><span>widok + kawa</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Mylotopi+Kefalos+Kos">Otwórz w Maps</a></div><div class="food"><b>Maistrali</b><span>ryby</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Maistrali+Restaurant+Kefalos+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Szybki kadr, bez pełnego zwiedzania.</span></div></article>
-<article class="card stop" data-arr="17:10" data-dep="17:40" data-lat="36.7463" data-lon="26.9588" data-minstay="25" data-must="0" data-priority="76" data-step="11" id="stop11">
-<div class="bubble">7</div><div class="title">☕ Mylotopi Kefalos</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag main">MAIN</span><span class="tag main">30 min</span></div>
-<div class="timebox"><div class="timeitem"><b>17:10</b><span>przyjazd</span></div><div class="timeitem"><b>30 min</b><span>na miejscu</span></div><div class="timeitem"><b>17:40</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Kawa/deser i piękny widok na zatokę.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy Mylotopi</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Mylotopi+Kefalos+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Mylotopi+Kefalos+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Mylotopi+Kefalos+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Kefalos+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Kefalos pokazuje spokojniejszą, krajobrazową stronę Kos. Mylotopi jest lubiane za widok na zatokę i Kastri.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Plan na miejscu — Mylotopi<span class="miniTime">20–35 min</span></div><a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=Mylotopi+Kefalos+Kos">📍 Otwórz punkt startowy</a><ol><li><b>Parking / wejście</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Mylotopi+Kefalos+Kos">Maps</a></li><li><b>Kawa / deser</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Mylotopi+Kefalos+Kos">Maps</a></li><li><b>Widok na zatokę</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Mylotopi+Kefalos+Kos">Maps</a></li></ol><div class="tiny">💡 To małe miejsce — nie odpalaj osobnej trasy pieszej, tylko użyj punktu startowego.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Mylotopi</b><span>widok/kawa/deser</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Mylotopi+Kefalos+Kos">Otwórz w Maps</a></div><div class="food"><b>Maistrali</b><span>ryby</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Maistrali+Restaurant+Kefalos+Kos">Otwórz w Maps</a></div><div class="food"><b>Faros Seaside</b><span>spokojny obiad</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Faros+Seaside+Restaurant+Kefalos+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Jeśli lunch był długi, zrób tylko zdjęcie.</span></div></article>
-<article class="card stop" data-arr="18:15" data-dep="18:35" data-lat="36.83" data-lon="27.165" data-minstay="20" data-must="0" data-priority="45" data-step="12" id="stop12">
-<div class="bubble">8</div><div class="title">🏚️ Paleo Pyli</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag bonus">BONUS</span><span class="tag bonus">20 min</span></div>
-<div class="timebox"><div class="timeitem"><b>18:15</b><span>przyjazd</span></div><div class="timeitem"><b>20 min</b><span>na miejscu</span></div><div class="timeitem"><b>18:35</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Klimatyczne ruiny i górski klimat.</p><div class="parkingTarget">🎯 Cel samochodem: parking przy szlaku</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Paleo+Pyli+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Paleo+Pyli+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Paleo+Pyli+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Pyli+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Paleo Pyli to dawna osada na zboczach Dikeos. Ruiny dają klimat ukrytego Kos daleko od plaż.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Plan na miejscu — Paleo Pyli<span class="miniTime">20–35 min</span></div><a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=Paleo+Pyli+parking+Kos">📍 Otwórz punkt startowy</a><ol><li><b>Parking / początek dojścia</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Paleo+Pyli+parking+Kos">Maps</a></li><li><b>Ruiny osady</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Paleo+Pyli+Kos">Maps</a></li><li><b>Punkt widokowy</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Paleo+Pyli+Kos">Maps</a></li></ol><div class="tiny">💡 To teren ruin i ścieżek — Google może nie prowadzić idealnie. Traktuj listę jako kolejność zwiedzania.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Oromedon później</b><span>nie jedz tutaj</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Oromedon+Zia+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Pomiń bez żalu, jeśli trzeba zdążyć na Zię.</span></div></article>
-<article class="card stop" data-arr="18:50" data-dep="21:00" data-lat="36.8425" data-lon="27.1625" data-minstay="90" data-must="1" data-priority="100" data-step="13" id="stop13">
-<div class="bubble">9</div><div class="title">🌅 Zia</div>
-<div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="autoSkipNotice">⏭️ auto pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag main">MAIN</span><span class="tag main">130 min</span></div>
-<div class="timebox"><div class="timeitem"><b>18:50</b><span>przyjazd</span></div><div class="timeitem"><b>130 min</b><span>na miejscu</span></div><div class="timeitem"><b>21:00</b><span>wyjazd dalej</span></div></div>
-<p class="muted">Zachód słońca, spacer i kolacja.</p><div class="parkingTarget">🎯 Cel samochodem: parking w Zii</div><div class="actions">
-<a class="btn primary navPlace" href="https://www.google.com/maps/search/?api=1&amp;query=Zia+parking+Kos">🚗 Parking</a>
-<button class="btn soft checkBtn" type="button">⭕ Byliśmy tutaj</button>
-<a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Zia+Kos+parking">🅿️ Parking</a><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Zia+Kos+photos">📸 Zdjęcia</a><a class="btn green" href="https://www.google.com/maps/search/?api=1&amp;query=supermarket+near+Zia+Kos">🛒 Sklep</a></div>
-<details><summary>📖 Opis / historia miejsca</summary><p>Zia leży na zboczach Dikeos i jest najsłynniejszym punktem zachodu słońca na Kos. Najlepsze kadry są często powyżej głównej ulicy.</p></details>
-<div class="section subroute"><div class="subrouteTitle">🚶 Mini-trasa piesza — Zia<span class="miniTime">60–90 min + kolacja</span></div><a class="btn primary" href="https://www.google.com/maps/dir/Zia+parking+Kos/Zia+Kos+main+street/Zia+Kos+blue+church/Zia+Kos+sunset+viewpoint/Oromedon+Zia+Kos/?travelmode=walking">🚶 Otwórz trasę pieszą</a><ol><li><b>Parking Zia</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Zia+parking+Kos">Maps</a></li><li><b>Główna uliczka</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Zia+Kos+main+street">Maps</a></li><li><b>Kościółek / boczne uliczki</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Zia+Kos+blue+church">Maps</a></li><li><b>Punkt zachodu słońca</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Zia+Kos+sunset+viewpoint">Maps</a></li><li><b>Kolacja: Oromedon</b> — <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Oromedon+Zia+Kos">Maps</a></li></ol><div class="tiny">💡 Najpierw parking, potem spacer i punkt widokowy. Stolik najlepiej mieć wcześniej.</div></div><div class="section"><b>🍽️ Najlepsze knajpy przy tym punkcie</b><div class="foodwrap">
-<div class="food"><b>Oromedon</b><span>najlepszy wybór z widokiem</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Oromedon+Zia+Kos">Otwórz w Maps</a></div><div class="food"><b>Sunset Balcony Taverna</b><span>alternatywa pod zachód</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Sunset+Balcony+Taverna+Zia+Kos">Otwórz w Maps</a></div><div class="food"><b>Taverna Avli</b><span>plan B</span><br/><a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Taverna+Avli+Zia+Kos">Otwórz w Maps</a></div></div></div><div class="section"><b>💡 Tip:</b> <span class="muted">Najpierw parking, potem stolik. Przyjedź 60 min przed zachodem.</span></div></article>
-</section><section class="card danger" id="cut"><h2>✂️ Reguły cięcia</h2><div class="cutgrid">
-<div class="box"><b>+15 min</b><br/><span class="tiny">Pomiń Plaka lub Antimachię.</span></div>
-<div class="box"><b>+30 min</b><br/><span class="tiny">Camel albo Paradise — nie oba.</span></div>
-<div class="box"><b>+45 min</b><br/><span class="tiny">Pomiń Limnionas i Kefalos Castle.</span></div>
-<div class="box"><b>+60 min</b><br/><span class="tiny">Pomiń Paleo Pyli, jedź do Zii.</span></div>
-</div></section><section class="card ok"><h2>✅ Spójność trasy</h2><p>Samochód prowadzi na parking. Mini-trasa piesza jest tylko tam, gdzie Google Maps dobrze rozpoznaje punkty. W miejscach typu Asklepion/plaża/ruiny używaj planu na miejscu.</p></section></main><footer class="footer">Kos Roadbook PRO • final</footer>
+<section class="card smart" id="smart"><div class="smartHead"><h2>🧠 Inteligentny asystent</h2><button class="btn soft smartToggle" id="smartToggle" type="button">−</button></div><div class="status" id="status">Ładuję plan...</div><div class="smartBody"><div class="muted" id="substatus">Plan pilnuje czasu, bonusów i finału w Zia.</div><div class="advice" id="advice"></div><div class="actions"><button class="btn primary" id="nowBtn" type="button">⏱️ Sprawdź teraz</button><button class="btn amber" id="autoBtn" type="button">🧠 Auto pomijaj bonusy</button><button class="btn soft" id="mainOnlyBtn" type="button">⚡ Tryb MAIN</button><button class="btn red" id="resetBtn" type="button">🗑️ Reset</button><a class="btn green" id="nextBtn" target="_blank">🚗 Nawiguj dalej</a></div></div></section>
+<section class="card ok"><h2>✅ Najlepsza strategia na jeden dzień</h2><p>Trzymamy główne punkty: <b>Therma, Asklepion, Kos Town, Agios Stefanos + Kastri, Mylotopi, Zia</b>. Bonusy są po trasie i pojawią się tylko wtedy, gdy realnie macie zapas czasu.</p></section>
+<section class="timeline" id="plan"></section>
+<section class="card warn" id="rules"><h2>🧠 Reguły Smart</h2><div class="grid"><div class="box"><b>0–20 min opóźnienia</b><br><span class="muted">Jedź normalnie, bonusy zostają.</span></div><div class="box"><b>20–40 min opóźnienia</b><br><span class="muted">Wycinamy niskie bonusy: Paradise/Kefalos.</span></div><div class="box"><b>40+ min opóźnienia</b><br><span class="muted">Zostają tylko MAIN + ewentualnie Plaka.</span></div><div class="box"><b>Po 18:45</b><br><span class="muted">Priorytet: Mylotopi → Zia → powrót do 22:00.</span></div></div></section>
+</main><footer class="footer">Kos Roadbook PRO — wersja 29.06.2026 / 10:00–22:00</footer>
 <script>
-(function(){
-"use strict";
-const stops=[...document.querySelectorAll(".stop")];
-const bar=document.getElementById("bar"), statusEl=document.getElementById("status"), sub=document.getElementById("substatus"), advice=document.getElementById("advice"), nextBtn=document.getElementById("nextBtn"), debugEl=document.getElementById("debug");
-let visited={};
-try{ visited=JSON.parse(localStorage.getItem("kosVisitedV10")||"{}"); }catch(e){ visited={}; }
-localStorage.removeItem("kosVisitedV8"); localStorage.removeItem("kosVisitedV9");
-let lastGPS=null, gpsError=null, currentMode="auto";
-let autoSkipped={};
-
-function toMin(t){const p=t.split(":").map(Number); return p[0]*60+p[1];}
-function nowMin(){const d=new Date(); return d.getHours()*60+d.getMinutes();}
-function timeNowText(){return new Date().toLocaleTimeString("pl-PL",{hour:"2-digit",minute:"2-digit"});}
-function distKm(a,b,c,d){const R=6371,rad=x=>x*Math.PI/180; const dLat=rad(c-a),dLon=rad(d-b); const s=Math.sin(dLat/2)**2+Math.cos(rad(a))*Math.cos(rad(c))*Math.sin(dLon/2)**2; return 2*R*Math.asin(Math.sqrt(s));}
-function nearest(lat,lon){let best=0,bd=999;stops.forEach((el,i)=>{const d=distKm(lat,lon,+el.dataset.lat,+el.dataset.lon);if(d<bd){bd=d;best=i;}});return {i:best,d:bd};}
-function planIndexByTime(){const n=nowMin();let idx=0;stops.forEach((el,i)=>{if(n>=toMin(el.dataset.arr))idx=i;});return idx;}
-function firstUnvisited(){for(let i=0;i<stops.length;i++){if(!visited[i])return i;} return stops.length-1;}
-function lateAgainstStop(idx){return nowMin()-toMin(stops[idx].dataset.arr);}
-function save(){localStorage.setItem("kosVisitedV10",JSON.stringify(visited));}
-function countVisited(){return Object.keys(visited).filter(k=>visited[k]).length;}
-function driveMin(a,b){
-  const A=stops[a], B=stops[b];
-  const d=distKm(+A.dataset.lat,+A.dataset.lon,+B.dataset.lat,+B.dataset.lon);
-  return Math.ceil(d/45*60 + 6); // rough island-road estimate
-}
-function minutesToZiaFrom(idx){
-  const z=stops.length-1;
-  if(idx===z) return 0;
-  return driveMin(idx,z);
-}
-function sunsetDeadlineMin(){ return toMin("18:45"); } // be in Zia before sunset window
-function applyVisited(){
-  stops.forEach((el,i)=>{
-    el.classList.toggle("visited",!!visited[i]);
-    el.classList.toggle("autoSkip",!!autoSkipped[i] && !visited[i]);
-    const btn=el.querySelector(".checkBtn");
-    if(btn){btn.classList.toggle("done",!!visited[i]);btn.textContent=visited[i]?"↩️ Cofnij":"⭕ Byliśmy tutaj";}
-  });
-}
-function setProgress(idx){
-  const done=countVisited();
-  bar.style.width=Math.max((done/stops.length)*100,((idx+1)/stops.length)*20)+"%";
-  stops.forEach((el,i)=>el.classList.toggle("active",i===idx));
-  applyVisited();
-}
-function rec(late, idx){
-  const title=stops[idx]?.querySelector(".title")?.textContent || "";
-  if(idx===stops.length-1) return "Jedź do Zii — to finał i najważniejszy zachód słońca.";
-  if(late>60)return "Duże opóźnienie: auto pomija bonusy. Priorytet: Agios Stefanos i Zia.";
-  if(late>45)return "Pomiń Limnionas, Kefalos Castle i Paleo Pyli.";
-  if(late>30)return "Wybierz tylko jedną plażę: Camel albo Paradise. Nie rób obu.";
-  if(late>15)return "Pomiń Plaka Forest lub skróć Kos Town/Antimachię.";
-  if(late<-20)return "Jesteście przed planem — auto może dodać bonus.";
-  return "Jedź zgodnie z planem.";
-}
-function getLastVisitedIndex(){
-  let last=-1;
-  Object.keys(visited).forEach(k=>{ if(visited[k]) last=Math.max(last,+k); });
-  return last;
-}
-function isCandidate(i, base){
-  if(visited[i]) return false;
-  if(i < base) return false;
-  return true;
-}
-function autoChoose(){
-  autoSkipped={};
-  const n=nowMin();
-  const timeIdx=planIndexByTime();
-  const base=Math.max(firstUnvisited(), Math.min(timeIdx, stops.length-1));
-  const z=stops.length-1;
-
-  // Always go to Zia if time is late enough or all key places are behind.
-  if(n >= toMin("18:20") && !visited[z]) {
-    for(let i=base;i<z;i++) if(stops[i].dataset.must!=="1") autoSkipped[i]=true;
-    return z;
-  }
-
-  // If a must-see ahead exists and time pressure is high, choose nearest/next must.
-  const lateBase = n - toMin(stops[base].dataset.arr);
-  if(lateBase > 35){
-    for(let i=base;i<z;i++){
-      const must=stops[i].dataset.must==="1";
-      if(!must) autoSkipped[i]=true;
-      if(must && !visited[i]) return i;
-    }
-    return z;
-  }
-
-  // Build feasible candidates: musts always allowed, bonus only when not late and still feasible for Zia.
-  let best=base, bestScore=-99999;
-  for(let i=base;i<stops.length;i++){
-    if(!isCandidate(i, base)) continue;
-    const pr=+stops[i].dataset.priority;
-    const must=stops[i].dataset.must==="1";
-    const minStay=+stops[i].dataset.minstay;
-    const travel = i===base ? 0 : driveMin(Math.max(base-1,0), i);
-    const finish = n + travel + minStay + minutesToZiaFrom(i);
-    const zDeadline = sunsetDeadlineMin();
-    const feasible = finish <= zDeadline || must || i===z;
-    const latePenalty = Math.max(0, n - toMin(stops[i].dataset.arr));
-    const orderPenalty = (i-base)*4;
-    let score = pr - latePenalty*0.7 - orderPenalty;
-    if(must) score += 50;
-    if(!feasible) score -= 120;
-    if(i===z && n<toMin("17:45")) score -= 80; // don't go too early unless needed
-    if(!must && lateBase>15) score -= 40;
-
-    if(!feasible && !must) autoSkipped[i]=true;
-    if(score>bestScore){bestScore=score; best=i;}
-  }
-
-  // Mark lower priority bonuses before chosen must as auto skipped if late.
-  if(lateBase>15){
-    for(let i=base;i<best;i++){
-      if(stops[i].dataset.must!=="1") autoSkipped[i]=true;
-    }
-  }
-  return best;
-}
-function nextSequential(idx){
-  for(let i=idx;i<stops.length;i++){ if(!visited[i]) return i; }
-  return stops.length-1;
-}
-function setNext(idx){
-  const link=stops[idx]?.querySelector(".navPlace")?.href;
-  if(link) nextBtn.href=link;
-  nextBtn.textContent=idx===stops.length-1?"🚗 Nawiguj do Zii":"🚗 Nawiguj dalej";
-}
-function debug(idx,late){
-  debugEl.textContent=`DIAGNOSTYKA
-JS: działa
-Tryb: ${currentMode}
-LocalStorage odwiedzone: ${JSON.stringify(visited)}
-Auto pominięte: ${JSON.stringify(autoSkipped)}
-Czas telefonu: ${timeNowText()}
-Wybrany indeks: ${idx}
-Opóźnienie względem wybranego punktu: ${late} min
-Secure context: ${window.isSecureContext?"TAK":"NIE"}
-Geolocation API: ${"geolocation" in navigator?"TAK":"NIE"}
-GPS: ${lastGPS?`${lastGPS.lat.toFixed(5)}, ${lastGPS.lon.toFixed(5)} ±${Math.round(lastGPS.acc)} m`:"brak"}
-Błąd GPS: ${gpsError||"brak"}
-
-Auto wybór bierze: odwiedzone + czas + priorytet + bufor na Zię.`;
-}
-function render(idx,msg,scroll){
-  if(visited[idx]) idx=autoChoose();
-  setProgress(idx);
-  const title=stops[idx].querySelector(".title").textContent;
-  const late=lateAgainstStop(idx);
-  const dep=stops[idx].dataset.dep;
-  const done=countVisited();
-  statusEl.textContent="Jedź teraz: "+title;
-  sub.textContent=`${msg} Godzina: ${timeNowText()}. Wyjazd: ${dep}. Zaliczone: ${done}/${stops.length}.`;
-  advice.textContent=rec(late,idx);
-  setNext(idx);
-  debug(idx,late);
-  if(scroll)stops[idx].scrollIntoView({behavior:"smooth",block:"center"});
-}
-function smartAuto(scroll=false){
-  currentMode="auto";
-  const idx=autoChoose();
-  render(idx,"Auto wybór.",scroll);
-}
-function smartTime(scroll=false){
-  currentMode="time";
-  autoSkipped={};
-  const idx=Math.max(firstUnvisited(),Math.min(planIndexByTime(),stops.length-1));
-  render(idx,"Tryb czasu + odwiedzone.",scroll);
-}
-function smartGPS(){
-  currentMode="gps";
-  if(!("geolocation" in navigator)){gpsError="Brak Geolocation API"; smartAuto(true); return;}
-  if(!window.isSecureContext){gpsError="Brak HTTPS / secure context"; smartAuto(true); return;}
-  statusEl.textContent="Sprawdzam GPS...";
-  navigator.geolocation.getCurrentPosition(pos=>{
-    lastGPS={lat:pos.coords.latitude,lon:pos.coords.longitude,acc:pos.coords.accuracy};
-    gpsError=null;
-    const r=nearest(lastGPS.lat,lastGPS.lon);
-    // If you are physically near an unvisited point, suggest it. Otherwise use auto.
-    let idx=autoChoose();
-    if(r.d<1.2 && !visited[r.i]) idx=r.i;
-    render(idx,`GPS: najbliższy punkt ok. ${r.d.toFixed(1)} km.`,true);
-  },err=>{gpsError=err.code+": "+err.message; smartAuto(true);},{enableHighAccuracy:true,timeout:12000,maximumAge:30000});
-}
-function toggleVisited(i){visited[i]=!visited[i]; if(!visited[i])delete visited[i]; save(); smartAuto(false);}
-function resetVisited(){visited={}; autoSkipped={}; localStorage.removeItem("kosVisitedV8"); localStorage.removeItem("kosVisitedV9"); localStorage.removeItem("kosVisitedV10"); smartAuto(false);}
-document.getElementById("gpsBtn").addEventListener("click",smartGPS);
-document.getElementById("timeBtn").addEventListener("click",()=>smartTime(true));
-const autoBtn=document.getElementById("autoBtn"); if(autoBtn) autoBtn.addEventListener("click",()=>smartAuto(true));
-document.getElementById("debugBtn").addEventListener("click",()=>{debugEl.style.display=debugEl.style.display==="none"?"block":"none"; smartAuto(false);});
-document.getElementById("resetBtn").addEventListener("click",resetVisited);
-stops.forEach((el,i)=>{el.querySelector(".checkBtn").addEventListener("click",()=>toggleVisited(i));});
-setInterval(()=>smartAuto(false),60000);
-addEventListener("scroll",()=>{let idx=0;stops.forEach((c,i)=>{if(c.getBoundingClientRect().top<innerHeight*.45)idx=i;}); if(countVisited()===0)bar.style.width=((idx+1)/stops.length*100)+"%";},{passive:true});
-
-const smartCard=document.getElementById("smart");
-const smartToggle=document.getElementById("smartToggle");
-function setSmartCollapsed(v){
-  smartCard.classList.toggle("collapsed", v);
-  smartToggle.textContent = v ? "+" : "−";
-  localStorage.setItem("kosSmartCollapsed", v ? "1" : "0");
-}
-smartToggle.addEventListener("click",()=>setSmartCollapsed(!smartCard.classList.contains("collapsed")));
-document.getElementById("smartMini").addEventListener("click",()=>setSmartCollapsed(false));
-if(localStorage.getItem("kosSmartCollapsed")!=="0") setSmartCollapsed(true);
-
-smartAuto(false);
-})();
-</script></body></html>
+const stops=[
+{n:'0',title:'🏨 Mitsis Ramira / Psalidi',kind:'MAIN',arr:'10:00',dep:'10:05',stay:5,priority:100,must:true,query:'Mitsis Ramira Beach Hotel parking Kos',desc:'Start. Woda, ręczniki, buty do wody, powerbank.',target:'parking hotelowy',tip:'Nie przeciągaj startu — cały plan zależy od wyjazdu o 10:05.'},
+{n:'1',title:'♨️ Therma Beach',kind:'MAIN',arr:'10:20',dep:'11:00',stay:40,priority:95,must:true,query:'Therma Beach parking Kos',desc:'Gorące źródła wpadające do morza. Nietypowe miejsce na Kos, najlepsze rano.',target:'parking nad zejściem',tip:'Buty do wody. Jeśli nie chcecie kąpieli, skróć do 20 min i zyskaj czas.'},
+{n:'2',title:'🏛️ Asklepion',kind:'MAIN',arr:'11:25',dep:'12:35',stay:70,priority:100,must:true,query:'Asklepion Kos parking',desc:'Najważniejszy zabytek wyspy i historia medycyny związana z Hipokratesem.',target:'parking przy wejściu',tip:'Najpierw najwyższy taras i widok, potem schodź niżej.'},
+{n:'3',title:'⚓ Kos Town + lunch',kind:'MAIN',arr:'12:50',dep:'14:05',stay:75,priority:92,must:true,query:'Kos Harbour parking',desc:'Port, zamek, Drzewo Hipokratesa, stare miasto i szybki lunch.',target:'parking przy porcie',tip:'Zaparkuj raz. Lunch ma być sprawny, nie dwugodzinny.'},
+{n:'4',title:'🌾 Traditional Windmill Antimachia',kind:'BONUS',arr:'14:35',dep:'14:55',stay:20,priority:63,must:false,query:'Traditional Windmill of Antimachia parking Kos',desc:'Krótki grecki foto-stop po drodze na zachód.',target:'parking przy wiatraku',tip:'Bonus po drodze. Przy opóźnieniu powyżej 25 min pomiń.'},
+{n:'B1',title:'🦚 Plaka Forest',kind:'BONUS',arr:'15:05',dep:'15:25',stay:20,priority:74,must:false,query:'Plaka Forest parking Kos',desc:'Cień, pawie i przyjemny reset od plaż. Dobry bonus, bo jest logicznie po trasie.',target:'parking przy wejściu do lasu',tip:'Najlepszy bonus logistyczny. Zostaw, jeśli opóźnienie jest małe.'},
+{n:'5',title:'🏖️ Agios Stefanos + Kastri',kind:'MAIN',arr:'15:50',dep:'17:15',stay:85,priority:100,must:true,query:'Agios Stefanos Beach parking Kos',desc:'Najbardziej pocztówkowa plaża Kos: ruiny bazyliki, widok na Kastri i kąpiel.',target:'parking przy plaży',tip:'To kluczowy punkt zachodu wyspy — nie skracaj poniżej 60 min.'},
+{n:'B2',title:'🏝️ Camel Beach',kind:'BONUS',arr:'17:25',dep:'17:45',stay:20,priority:62,must:false,query:'Camel Beach parking Kos',desc:'Ładna plaża obok Paradise. Bonus tylko gdy jesteście punktualnie.',target:'parking przy zejściu',tip:'Dodaj tylko, jeśli macie siłę na kolejną plażę.'},
+{n:'B3',title:'🌊 Paradise Beach',kind:'BONUS',arr:'17:55',dep:'18:15',stay:20,priority:45,must:false,query:'Paradise Beach parking Kos',desc:'Popularna plaża. Fajna, ale po Agios Stefanos nie jest obowiązkowa.',target:'parking przy plaży',tip:'Pierwszy bonus do wycięcia przy opóźnieniu.'},
+{n:'6',title:'☕ Mylotopi Kefalos',kind:'MAIN',arr:'18:35',dep:'19:05',stay:30,priority:86,must:true,query:'Mylotopi Kefalos parking Kos',desc:'Kawa/deser i piękny widok na zatokę Kefalos oraz Kastri.',target:'parking przy Mylotopi',tip:'Jeśli jest późno, zrób szybkie zdjęcie i jedź do Zia.'},
+{n:'B4',title:'🏰 Kefalos Castle Viewpoint',kind:'BONUS',arr:'19:10',dep:'19:25',stay:15,priority:38,must:false,query:'Kefalos Castle parking Kos',desc:'Szybki punkt widokowy. Dubluje trochę widok z Mylotopi.',target:'parking przy podejściu',tip:'Tylko przy dużym zapasie czasu. W innym razie jedź do Zia.'},
+{n:'7',title:'🌄 Zia — zachód + kolacja',kind:'MAIN',arr:'20:10',dep:'21:15',stay:65,priority:100,must:true,query:'Zia parking Kos',desc:'Finał dnia: widoki, spacer, kolacja i klimat górskiej wioski.',target:'parking w Zia',tip:'Bądźcie tu najpóźniej około 20:15, żeby nie zepsuć finału.'},
+{n:'8',title:'🚗 Powrót / oddanie auta',kind:'MAIN',arr:'21:55',dep:'22:00',stay:5,priority:100,must:true,query:'Car park Zia to Mitsis Ramira Beach Hotel Kos',desc:'Auto musi być oddane do 22:00. Nie ryzykuj wyjazdu z Zia po 21:20.',target:'hotel / punkt oddania auta',tip:'Ustaw alarm na 21:10: płacimy, wychodzimy, jedziemy.'}
+];
+const enc=s=>encodeURIComponent(s).replace(/%20/g,'+');
+const mapsSearch=q=>'https://www.google.com/maps/search/?api=1&query='+enc(q);
+const mapsDir=arr=>'https://www.google.com/maps/dir/?api=1&travelmode=driving&origin='+enc(arr[0].query)+'&destination='+enc(arr[arr.length-1].query)+'&waypoints='+arr.slice(1,-1).map(x=>enc(x.query)).join('%7C');
+function mins(t){const [h,m]=t.split(':').map(Number);return h*60+m}function hhmm(m){m=(m+1440)%1440;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}function nowKosMins(){const d=new Date();try{return d.getHours()*60+d.getMinutes()}catch(e){return 10*60}}
+const plan=document.getElementById('plan');
+function render(){plan.innerHTML=stops.map((s,i)=>`<article class="card stop" id="stop${i}" data-i="${i}" data-must="${s.must?1:0}" data-priority="${s.priority}" data-arr="${s.arr}" data-dep="${s.dep}"><div class="bubble">${s.n}</div><div class="title">${s.title}</div><div class="tags"><span class="visitedBadge">✅ odwiedzone</span><span class="skipBadge">⏭️ pomiń</span><span class="unvisitedBadge">⭕ nieodwiedzone</span><span class="tag ${s.kind==='MAIN'?'main':'bonus'}">${s.kind}</span><span class="tag ${s.kind==='MAIN'?'main':'bonus'}">${s.stay} min</span><span class="tag ${s.priority>80?'main':'bonus'}">priorytet ${s.priority}</span></div><div class="timebox"><div class="timeitem"><b>${s.arr}</b><span>przyjazd</span></div><div class="timeitem"><b>${s.stay} min</b><span>na miejscu</span></div><div class="timeitem"><b>${s.dep}</b><span>wyjazd dalej</span></div></div><p class="muted">${s.desc}</p><div class="parkingTarget">🎯 Cel samochodem: ${s.target}</div><div class="actions"><a class="btn primary navPlace" target="_blank" href="${mapsSearch(s.query)}">🚗 Parking / punkt</a><button class="btn soft checkBtn" type="button" data-i="${i}">⭕ Byliśmy tutaj</button><button class="btn soft skipBtn" type="button" data-i="${i}">⏭️ Pomiń</button><a class="btn soft" target="_blank" href="${mapsSearch(s.query+' photos')}">📸 Zdjęcia</a></div><details><summary>🚶 Plan na miejscu / tip</summary><p><b>Tip:</b> ${s.tip}</p><p class="tiny">Po dojechaniu traktuj Google jako dojazd do parkingu. Zwiedzanie na miejscu rób według opisu w tej karcie.</p></details></article>`).join('');document.querySelectorAll('.checkBtn').forEach(b=>b.onclick=()=>toggleVisited(+b.dataset.i));document.querySelectorAll('.skipBtn').forEach(b=>b.onclick=()=>toggleSkip(+b.dataset.i));update();}
+function getSet(k){return new Set(JSON.parse(localStorage.getItem(k)||'[]'))}function saveSet(k,set){localStorage.setItem(k,JSON.stringify([...set]))}
+function toggleVisited(i){const v=getSet('kosVisited');v.has(i)?v.delete(i):v.add(i);saveSet('kosVisited',v);update()}function toggleSkip(i){const v=getSet('kosSkipManual');v.has(i)?v.delete(i):v.add(i);saveSet('kosSkipManual',v);update()}
+let auto=true, mainOnly=false;document.getElementById('autoBtn').onclick=()=>{auto=!auto;update()};document.getElementById('mainOnlyBtn').onclick=()=>{mainOnly=!mainOnly;update()};document.getElementById('resetBtn').onclick=()=>{localStorage.removeItem('kosVisited');localStorage.removeItem('kosSkipManual');auto=true;mainOnly=false;update()};document.getElementById('nowBtn').onclick=update;document.getElementById('smartToggle').onclick=()=>document.getElementById('smart').classList.toggle('collapsed');
+function skippedIndexes(delay){const skip=new Set([...getSet('kosSkipManual')]);stops.forEach((s,i)=>{if(mainOnly&&!s.must)skip.add(i);if(auto&&!s.must){if(delay>20&&s.priority<50)skip.add(i);if(delay>30&&s.priority<65)skip.add(i);if(delay>45&&s.priority<80)skip.add(i);if(nowKosMins()>18*60+45&&s.kind==='BONUS')skip.add(i);}});return skip}
+function update(){const visited=getSet('kosVisited');let now=nowKosMins();let current=stops.findIndex((s,i)=>!visited.has(i)&&mins(s.dep)>=now);if(current<0)current=stops.length-1;const delay=now-mins(stops[current].arr);const skip=skippedIndexes(delay);document.querySelectorAll('.stop').forEach(el=>{const i=+el.dataset.i;el.classList.toggle('visited',visited.has(i));el.classList.toggle('autoSkip',skip.has(i)&&!visited.has(i));el.classList.toggle('active',i===current);const btn=el.querySelector('.checkBtn');if(btn){btn.classList.toggle('done',visited.has(i));btn.textContent=visited.has(i)?'✅ Odwiedzone':'⭕ Byliśmy tutaj'}});let next=stops.findIndex((s,i)=>!visited.has(i)&&!skip.has(i));if(next<0)next=stops.length-1;const remaining=stops.filter((s,i)=>i>=next&&!visited.has(i)&&!skip.has(i));const full=stops.filter((s,i)=>!skip.has(i));const main=stops.filter(s=>s.must);document.getElementById('fullRouteTop').href=mapsDir(full);document.getElementById('mainRouteTop').href=mapsDir(main);document.getElementById('routeNav').href=mapsDir(remaining.length?remaining:main);document.getElementById('nextBtn').href=mapsSearch(stops[next].query);document.getElementById('bar').style.width=Math.max(0,Math.min(100,(now-mins('10:00'))/(mins('22:00')-mins('10:00'))*100))+'%';let mood=delay<=10?'✅ Idziecie dobrze':delay<=30?'⚠️ Lekkie opóźnienie':'🚨 Duże opóźnienie';if(now<mins('10:00'))mood='🟦 Plan startuje o 10:00';document.getElementById('status').textContent=mood+' — następny punkt: '+stops[next].title;const skipped=[...skip].filter(i=>!visited.has(i)).map(i=>stops[i].title.replace(/^[^ ]+ /,''));document.getElementById('substatus').textContent='Teraz: '+hhmm(now)+' • opóźnienie względem najbliższego punktu: '+delay+' min • tryb Auto: '+(auto?'ON':'OFF')+' • MAIN only: '+(mainOnly?'ON':'OFF');document.getElementById('advice').innerHTML=(skipped.length?'Smart pomija: <b>'+skipped.join(', ')+'</b>. ':'')+(now>mins('18:45')?'Po 18:45 nie dodawaj już nowych bonusów — pilnuj Mylotopi/Zia.':'');}
+render();setInterval(update,60000);
+</script>
+</body></html>
