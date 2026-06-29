@@ -3,82 +3,64 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Kos Roadbook PRO — Smart v6 bez Kos Town, auto do 21:00</title>
+<title>Kos Roadbook PRO — Plan LIVE od 14:00, auto do 21:00</title>
 <meta name="theme-color" content="#0876d8">
 <style>
 :root{--bg:#eef8ff;--card:#fff;--ink:#102033;--muted:#66758a;--blue:#0876d8;--deep:#09223f;--line:#d8e6f0;--amber:#f59e0b;--green:#0e8a55;--red:#d92d20;--shadow:0 14px 38px rgba(8,45,84,.14);--r:24px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#dff7ff,#f7fbff 38%,#f5f7f9);color:var(--ink);line-height:1.38}a{color:inherit}.wrap{max-width:980px;margin:auto}.hero{padding:30px 14px 20px;background:radial-gradient(circle at 14% 0%,#6ce4ea,#0876d8 46%,#061f3d);color:white;border-bottom-left-radius:34px;border-bottom-right-radius:34px;box-shadow:var(--shadow)}h1{font-size:31px;line-height:1.05;margin:0 0 8px}h2{font-size:21px;margin:0 0 8px}.hero p{margin:8px 0;color:#eafaff}.pill{display:inline-flex;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:7px 10px;margin:4px 4px 0 0;font-size:13px;font-weight:900}.nav{position:sticky;top:0;z-index:20;background:rgba(247,251,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:7px 8px;overflow:auto;white-space:nowrap}.btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border-radius:15px;padding:10px 12px;margin:4px;font-weight:900;border:1px solid transparent;box-shadow:0 5px 14px rgba(11,63,108,.08);font-size:14px}button.btn{font-family:inherit;cursor:pointer}.primary{background:var(--blue);color:white}.dark{background:var(--deep);color:white}.soft{background:white;border-color:var(--line);color:var(--ink)}.amber{background:var(--amber);color:white}.green{background:var(--green);color:white}.red{background:var(--red);color:white}.card{background:rgba(255,255,255,.985);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:12px;box-shadow:var(--shadow)}.muted{color:var(--muted)}.tiny{font-size:13px;color:var(--muted)}.ok{border-left:6px solid var(--green);background:#ecfdf5}.warn{border-left:6px solid var(--amber);background:#fff9ec}.danger{border-left:6px solid var(--red);background:#fff4f2}.smart{position:sticky;top:58px;z-index:15;border-left:6px solid var(--blue);background:#f0f8ff}.smartHead{display:flex;align-items:center;justify-content:space-between;gap:10px}.smartHead h2{margin:0}.smartToggle{min-width:44px}.smartBody{overflow:hidden;transition:max-height .25s ease,opacity .2s ease;max-height:900px;opacity:1}.smart.collapsed .smartBody{max-height:0;opacity:0}.status{font-size:18px;font-weight:950;margin:8px 0}.decision{background:white;border:1px solid var(--line);border-radius:18px;padding:12px;margin:10px 0;font-weight:850}.modeRow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.mode{border:1px solid var(--line);background:white;border-radius:18px;padding:12px;text-align:center;font-weight:950;box-shadow:0 5px 14px rgba(11,63,108,.08)}.mode.activeMode{background:var(--blue);color:#fff;border-color:var(--blue)}.mode small{display:block;font-weight:700;opacity:.78}.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{border-radius:999px;padding:6px 9px;font-size:12px;font-weight:950;background:#eef4ff;color:#07539b}.chip.good{background:#ecfdf5;color:#05603a}.chip.warn{background:#fff4da;color:#8a4b00}.chip.bad{background:#fff4f2;color:#a32116}.progress{height:10px;background:#d9edf8;border-radius:999px;overflow:hidden;margin-top:12px}.bar{height:100%;background:linear-gradient(90deg,#0876d8,#00a6c7,#f59e0b);width:0%}.timeline{position:relative}.timeline:before{content:"";position:absolute;left:30px;top:0;bottom:0;width:3px;background:linear-gradient(var(--blue),#00a6c7,var(--amber));border-radius:9px}.stop{position:relative;margin:10px 12px;padding:15px 14px 15px 58px}.bubble{position:absolute;left:8px;top:16px;width:45px;height:45px;border-radius:15px;background:white;border:3px solid var(--blue);display:grid;place-items:center;font-weight:950;color:var(--blue)}.title{font-size:20px;font-weight:950;line-height:1.15}.tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.tag{border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}.main{background:#eaf4ff;color:#07539b}.bonus{background:#fff4da;color:#8a4b00}.visitedBadge,.skipBadge{display:none;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}.visitedBadge{background:#ecfdf5;color:#05603a}.skipBadge{background:#fff4f2;color:#a32116}.unvisitedBadge{display:inline-flex;background:#eef4ff;color:#07539b;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950}.timebox{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:11px 0}.timeitem{background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:10px;text-align:center}.timeitem b{display:block;font-size:17px}.timeitem span{font-size:12px;color:var(--muted)}.actions{display:flex;flex-wrap:wrap}.section{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}details{background:#f8fbff;border:1px solid var(--line);border-radius:17px;padding:12px;margin-top:12px}summary{font-weight:950;cursor:pointer}.subroute{background:#f7fbff;border:1px solid var(--line);border-radius:18px;padding:12px;margin-top:12px}.subroute ol{margin:8px 0 0 20px;padding:0}.subroute li{margin:7px 0}.miniTime{display:inline-flex;background:#eef4ff;color:#07539b;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:950;margin-left:4px}.parkingTarget{display:inline-flex;background:#ecfdf5;color:#05603a;border:1px solid #b7e4c7;border-radius:999px;padding:7px 10px;margin:6px 0 10px 0;font-size:13px;font-weight:950}.active{outline:3px solid rgba(8,118,216,.35)}.visited{opacity:.72}.visited .bubble{border-color:var(--green);color:var(--green)}.visited .visitedBadge{display:inline-flex}.visited .unvisitedBadge{display:none}.autoSkip{opacity:.48}.autoSkip .bubble{border-color:var(--red);color:var(--red)}.autoSkip .skipBadge{display:inline-flex}.autoSkip .unvisitedBadge{display:none}.checkBtn.done{background:var(--green);color:white}.foodwrap{display:grid;grid-template-columns:1fr;gap:8px;margin-top:8px}.food{background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:11px}.food b{display:block}.food span{font-size:13px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.box{background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:12px}.footer{text-align:center;padding:28px 16px;color:var(--muted);font-size:13px}@media(max-width:760px){h1{font-size:27px}.card{margin:10px 8px;padding:14px}.stop{padding-left:55px}.btn{padding:10px 11px}.title{font-size:19px}.grid,.timebox,.modeRow{grid-template-columns:1fr}.smart{top:54px}.mode{text-align:left}}
 </style>
 </head>
 <body>
-<header class="hero"><div class="wrap"><h1>🏝️ Kos Roadbook PRO</h1><p><b>29.06.2026:</b> plan na 10:00–21:00 bez Kos Town. Miasto Kos zostaje na osobny dzień rowerowy; dziś Smart prowadzi przez najlepsze punkty wyspy, bonusy po drodze, mini trasy piesze i knajpy TOP.</p><span class="pill">🚗 Auto do 21:00</span><span class="pill">🧠 Smart</span><span class="pill">🚶 Mini trasy</span><span class="pill">🍽️ Knajpy TOP</span><span class="pill">🌄 Zia + powrót do 21:00</span><div style="margin-top:12px"><a class="btn dark" id="fullRouteTop" target="_blank">🚗 Cała trasa</a><a class="btn green" id="mainRouteTop" target="_blank">⚡ Tylko MAIN</a></div><div class="progress"><div class="bar" id="bar"></div></div></div></header>
+<header class="hero"><div class="wrap"><h1>🏝️ Kos Roadbook PRO</h1><p><b>LIVE 14:00:</b> jesteście już na Agios Stefanos. Bez kąpieli na plażach — tylko widoki, zdjęcia, krótkie spacery i najlepsze miejscówki. Auto oddajemy do 21:00.</p><span class="pill">🚗 Auto do 21:00</span><span class="pill">🧠 Smart</span><span class="pill">🚶 Mini trasy</span><span class="pill">🍽️ Knajpy TOP</span><span class="pill">📸 widoki bez kąpieli</span><span class="pill">🌄 Zia + powrót do 21:00</span><div style="margin-top:12px"><a class="btn dark" id="fullRouteTop" target="_blank">🚗 Cała trasa</a><a class="btn green" id="mainRouteTop" target="_blank">⚡ Tylko MAIN</a></div><div class="progress"><div class="bar" id="bar"></div></div></div></header>
 <nav class="nav"><div class="wrap"><a class="btn primary" href="#smart">Smart</a><a class="btn soft" href="#plan">Plan</a><a class="btn soft" href="#rules">Zasady</a><a class="btn soft" id="routeNav" target="_blank">Google Maps</a></div></nav>
 <main class="wrap">
 <section class="card smart" id="smart"><div class="smartHead"><h2>🧠 Inteligentny asystent</h2><button class="btn soft smartToggle" id="smartToggle" type="button">−</button></div><div class="status" id="status">Ładuję plan...</div><div class="smartBody"><div class="chips" id="chips"></div><div class="decision" id="decision">Asystent zaraz oceni sytuację.</div><div class="modeRow"><button class="mode" id="modeSmart" type="button">🧠 SMART<small>polecam — sam wybiera bonusy</small></button><button class="mode" id="modeFull" type="button">🚗 Cała trasa<small>nie pomija bonusów</small></button><button class="mode" id="modeMain" type="button">⚡ Tylko MAIN<small>bez bonusów</small></button></div><div class="actions"><button class="btn primary" id="nowBtn" type="button">📊 Sprawdź sytuację</button><button class="btn red" id="resetBtn" type="button">🗑️ Reset</button><a class="btn green" id="nextBtn" target="_blank">🚗 Nawiguj dalej</a></div></div></section>
-<section class="card ok"><h2>✅ Strategia na jeden dzień bez Kos Town</h2><p><b>Kos Town wykluczamy</b>, bo pojedziecie tam rowerami innego dnia. Dzisiejsze główne punkty to: <b>Therma, Asklepion, Agios Stefanos + Kastri, Mylotopi, Zia</b>. Auto oddajemy o <b>21:00</b>, więc usuwamy ryzykowne bonusy Paradise i Kefalos Castle; Smart zostawia tylko krótkie bonusy po drodze, gdy realnie macie zapas czasu.</p></section>
+<section class="card ok"><h2>✅ Strategia LIVE od 14:00</h2><p>Jesteście już na <b>Agios Stefanos</b>. Od teraz plan jest przebudowany: <b>zero kąpieli</b>, żeby nie mieć problemu z autem z wypożyczalni. Priorytet: <b>Kastri/ruiny → Camel viewpoint → Kefalos Castle → Mylotopi → Limnionas → Paleo Pyli → Zia → oddanie auta do 21:00</b>.</p></section>
 <section class="timeline" id="plan"></section>
-<section class="card warn" id="rules"><h2>🧠 Zasady Smart</h2><div class="grid"><div class="box"><b>Macie zapas czasu</b><br><span class="muted">Smart zostawia Plaka, Camel lub inne bonusy.</span></div><div class="box"><b>20–35 min opóźnienia</b><br><span class="muted">Wypadają słabsze bonusy: Paradise/Kefalos, ale główne punkty zostają.</span></div><div class="box"><b>35–50 min opóźnienia</b><br><span class="muted">Zostaje maksymalnie Plaka jako bonus.</span></div><div class="box"><b>Po 17:00</b><br><span class="muted">Nie dokładamy bonusów. Priorytet: Mylotopi → Zia → powrót i oddanie auta do 21:00.</span></div></div></section>
-</main><footer class="footer">Kos Roadbook PRO — bez Kos Town + auto do 21:00 + Smart + mini trasy + restauracje</footer>
+<section class="card warn" id="rules"><h2>🧠 Zasady Smart</h2><div class="grid"><div class="box"><b>Macie zapas czasu</b><br><span class="muted">Smart zostawia Plaka, Camel lub inne bonusy.</span></div><div class="box"><b>20–35 min opóźnienia</b><br><span class="muted">Wypadają słabsze bonusy: Paradise/Kefalos, ale główne punkty zostają.</span></div><div class="box"><b>35–50 min opóźnienia</b><br><span class="muted">Zostaje maksymalnie Plaka jako bonus.</span></div><div class="box"><b>Po 18:15</b><br><span class="muted">Nie dokładamy już bonusów. Priorytet: Zia → wyjazd najpóźniej 20:00 → auto do 21:00.</span></div></div></section>
+</main><footer class="footer">Kos Roadbook PRO — LIVE od Agios Stefanos + auto do 21:00 + mini trasy + restauracje</footer>
 <script>
 const stops=[
-{n:'0',title:'🏨 Mitsis Ramira / Psalidi',kind:'MAIN',arr:'10:00',dep:'10:05',stay:5,priority:100,must:true,query:'Mitsis Ramira Beach Hotel parking Kos',desc:'Start. Woda, ręczniki, buty do wody, powerbank.',target:'parking hotelowy',tip:'Nie przeciągaj startu — auto musi wrócić do 21:00.',walkTitle:'Start dnia',walkTime:'5 min',walk:['Sprawdź wodę, ręczniki, krem SPF i powerbank','Ustaw Google Maps na Therma Beach parking','Wyjazd najpóźniej 10:05']},
-{n:'1',title:'♨️ Therma Beach',kind:'MAIN',arr:'10:20',dep:'10:55',stay:35,priority:95,must:true,query:'Therma Beach parking Kos',desc:'Gorące źródła wpadające do morza. Krótka kąpiel i zdjęcia — bez przeciągania.',target:'parking nad zejściem',tip:'Buty do wody. Jeśli jesteście po czasie, skróć do 20–25 min.',walkTitle:'Plan na miejscu — Therma',walkTime:'25–35 min',walk:['Parking nad zejściem','Foto z drogi nad zatoką','Zejście do basenu termalnego','Krótka kąpiel w gorącym źródle','Powrót na parking bez przeciągania czasu']},
-{n:'2',title:'🏛️ Asklepion',kind:'MAIN',arr:'11:20',dep:'12:20',stay:60,priority:100,must:true,query:'Asklepion Kos parking',desc:'Najważniejszy zabytek wyspy i historia medycyny związana z Hipokratesem.',target:'parking przy wejściu',tip:'Najpierw najwyższy taras i widok, potem schodź niżej. Nie przekraczaj 60 min.',walkTitle:'Plan na miejscu — Asklepion',walkTime:'50–60 min',walk:['Wejście / kasa','Najpierw najwyższy taras i panorama','Środkowy taras','Dolny taras','Wyjście i powrót na parking']},
-{n:'B1',title:'🌾 Traditional Windmill Antimachia',kind:'BONUS',arr:'12:50',dep:'13:05',stay:15,priority:70,must:false,query:'Traditional Windmill of Antimachia parking Kos',desc:'Krótki grecki foto-stop po Asklepionie. Dobry bonus po drodze na zachód.',target:'parking przy wiatraku',tip:'Zrób zdjęcia i jedź dalej. Przy opóźnieniu powyżej 15–20 min pomiń.',walkTitle:'Po zaparkowaniu — wiatrak',walkTime:'10–15 min',walk:['Parking przy wiatraku','Obejście wiatraka dookoła','Szybkie zdjęcia','Bez długiej kawy','Powrót do auta']},
-{n:'B2',title:'🦚 Plaka Forest',kind:'BONUS',arr:'13:15',dep:'13:35',stay:20,priority:78,must:false,query:'Plaka Forest parking Kos',desc:'Cień, pawie i przyjemny reset przed plażami. Najlepszy bonus logistyczny.',target:'parking przy wejściu do lasu',tip:'Zostaw tylko, jeśli Smart pokazuje zapas lub maksymalnie małe opóźnienie.',walkTitle:'Po zaparkowaniu — Plaka',walkTime:'15–20 min',walk:['Parking Plaka Forest','Wejście w zacienioną część lasu','Miejsce z pawiami','Krótki spacer pętlą','Powrót na parking']},
-{n:'3',title:'🏖️ Agios Stefanos + Kastri',kind:'MAIN',arr:'14:05',dep:'15:30',stay:85,priority:100,must:true,query:'Agios Stefanos Beach parking Kos',desc:'Najbardziej pocztówkowa plaża Kos: ruiny bazyliki, Kastri i kąpiel.',target:'parking przy plaży',tip:'Kluczowy punkt dnia. Jeśli jest opóźnienie, zostaw minimum 60 min i jedź dalej.',walkTitle:'Plan na miejscu — Agios Stefanos',walkTime:'65–85 min',walk:['Parking przy plaży','Ruiny bazyliki Agios Stefanos','Kadr na wysepkę Kastri','Kąpiel / plaża','Powrót do auta i szybkie przebranie']},
-{n:'B3',title:'🏝️ Camel Beach',kind:'BONUS',arr:'15:40',dep:'15:55',stay:15,priority:62,must:false,query:'Camel Beach parking Kos',desc:'Ładna plaża obok Paradise. Tylko szybki widok, gdy jesteście na czas.',target:'parking przy zejściu',tip:'Bonus awaryjny. Przy jakimkolwiek większym opóźnieniu pomiń i jedź do Mylotopi.',walkTitle:'Po zaparkowaniu — Camel Beach',walkTime:'10–15 min',walk:['Parking przy zejściu','Zejście na plażę','Krótki widok / zdjęcie','Bez kąpieli','Powrót do auta']},
-{n:'4',title:'☕ Mylotopi Kefalos',kind:'MAIN',arr:'16:20',dep:'16:50',stay:30,priority:90,must:true,query:'Mylotopi Kefalos parking Kos',desc:'Kawa/deser i piękny widok na zatokę Kefalos oraz Kastri.',target:'parking przy Mylotopi',tip:'Jeśli jest późno, zrób szybkie zdjęcie i jedź do Zia.',walkTitle:'Plan na miejscu — Mylotopi',walkTime:'20–30 min',walk:['Parking / wejście','Kawa lub deser','Punkt widokowy na zatokę','Zdjęcia na Kastri','Powrót do auta']},
-{n:'5',title:'🌄 Zia — zachód + kolacja',kind:'MAIN',arr:'17:50',dep:'19:40',stay:110,priority:100,must:true,query:'Zia parking Kos',desc:'Finał dnia: widoki, spacer, kolacja i klimat górskiej wioski. Wyjazd najpóźniej 19:40.',target:'parking w Zia',tip:'Ustaw alarm na 19:25: płacimy i zbieramy się do auta. Nie ryzykuj wyjazdu po 19:40.',walkTitle:'Plan na miejscu — Zia',walkTime:'90–110 min',walk:['Parking w Zia','Spacer główną uliczką','Punkt widokowy na zachód słońca','Kolacja / deser','19:25 płacimy i wracamy do auta']},
-{n:'6',title:'🚗 Powrót / oddanie auta',kind:'MAIN',arr:'20:45',dep:'21:00',stay:15,priority:100,must:true,query:'Mitsis Ramira Beach Hotel Kos',desc:'Auto musi być oddane do 21:00. Plan zakłada bufor około 15 min.',target:'hotel / punkt oddania auta',tip:'Najpóźniej 19:40 wyjazd z Zia. Jeśli Google pokazuje korki, wyjedź wcześniej.',walkTitle:'Koniec dnia',walkTime:'5 min',walk:['Zaparkuj / oddaj auto','Zabierz rzeczy z auta','Sprawdź telefon i dokumenty','Koniec trasy']}
+{n:'TERAZ',title:'🏖️ Agios Stefanos + Kastri',kind:'MAIN',arr:'14:00',dep:'14:30',stay:30,priority:100,must:true,query:'Agios Stefanos Beach parking Kos',desc:'Jesteście już tutaj. Bez kąpieli: ruiny bazyliki, zdjęcia na Kastri i szybki spacer.',target:'parking przy plaży',tip:'Wyjazd o 14:30. Nie kąpiemy się, żeby nie mieć problemu z autem.',walkTitle:'Plan na miejscu — Agios Stefanos bez kąpieli',walkTime:'25–30 min',walk:['Parking przy plaży','Ruiny bazyliki Agios Stefanos','Najlepszy kadr na wysepkę Kastri','Krótki spacer brzegiem bez wchodzenia do wody','14:25 powrót do auta, 14:30 wyjazd']},
+{n:'1',title:'🏝️ Camel Beach Viewpoint',kind:'BONUS',arr:'14:40',dep:'14:55',stay:15,priority:74,must:false,query:'Camel Beach parking Kos',desc:'Krótki, mocny widok na zatokę i klify. Tylko zdjęcia, bez schodzenia na długą plażę.',target:'parking / punkt widokowy przy zejściu',tip:'Jeśli Google pokazuje trudny dojazd albo brak miejsca — pomiń i jedź do Kefalos Castle.',walkTitle:'Mini punkt — Camel bez kąpieli',walkTime:'10–15 min',walk:['Parking przy zejściu','Zdjęcie z góry na zatokę','Krótki spacer tylko do bezpiecznego widoku','Bez kąpieli i bez długiego zejścia','Powrót do auta']},
+{n:'2',title:'🏰 Kefalos Castle Viewpoint',kind:'MAIN',arr:'15:15',dep:'15:40',stay:25,priority:92,must:true,query:'Kefalos Castle parking Kos',desc:'Jedna z najlepszych panoram zachodniego Kos: Kefalos, zatoka i wyspa Kastri z góry.',target:'parking przy podejściu do zamku',tip:'Nie rób pełnej wspinaczki, jeśli jest gorąco. Wystarczy punkt widokowy i kilka zdjęć.',walkTitle:'Plan na miejscu — Kefalos Castle',walkTime:'20–25 min',walk:['Parking / start podejścia','Podejście do ruin lub pierwszego dobrego widoku','Panorama na zatokę Kefalos','Krótki kadr na ruiny zamku','Powrót do auta']},
+{n:'3',title:'☕ Mylotopi Kefalos',kind:'MAIN',arr:'15:45',dep:'16:20',stay:35,priority:95,must:true,query:'Mylotopi Kefalos parking Kos',desc:'Kawa/deser i świetny widok na zatokę. Idealny postój bez plażowania.',target:'parking przy Mylotopi',tip:'Najlepszy punkt na kawę i szybki reset. Nie przeciągaj ponad 35 min.',walkTitle:'Plan na miejscu — Mylotopi',walkTime:'30–35 min',walk:['Parking / wejście','Kawa albo deser','Punkt widokowy na zatokę Kefalos','Zdjęcia na Kastri i wybrzeże','Powrót do auta']},
+{n:'4',title:'🌅 Limnionas Bay',kind:'BONUS',arr:'16:50',dep:'17:20',stay:30,priority:82,must:false,query:'Limnionas Bay parking Kos',desc:'Bardzo klimatyczna zatoka po zachodniej stronie. Spokojne miejsce na zdjęcia i widok, bez kąpieli.',target:'parking przy zatoce',tip:'Zostaw tylko, jeśli jesteście na czas. Przy opóźnieniu jedź prosto na Paleo Pyli albo Zia.',walkTitle:'Plan na miejscu — Limnionas bez kąpieli',walkTime:'20–30 min',walk:['Parking przy zatoce','Krótki spacer do wody','Zdjęcia zatoki i łódek','Opcjonalnie szybki napój w tawernie','Powrót do auta']},
+{n:'5',title:'🏚️ Paleo Pyli',kind:'BONUS',arr:'18:05',dep:'18:35',stay:30,priority:80,must:false,query:'Paleo Pyli parking Kos',desc:'Klimatyczne ruiny na zboczu góry. Super miejsce, jeśli chcecie coś innego niż plaże.',target:'parking przy szlaku / ruinach',tip:'Jeśli jest gorąco albo jesteście po czasie, zróbcie tylko dolny fragment i zdjęcia.',walkTitle:'Plan na miejscu — Paleo Pyli krótko',walkTime:'20–30 min',walk:['Parking / początek dojścia','Krótki spacer do pierwszych ruin','Zdjęcia kamiennych zabudowań i gór','Nie wchodź wysoko, jeśli czas ucieka','Powrót do auta']},
+{n:'6',title:'🌄 Zia — widok + szybka kolacja',kind:'MAIN',arr:'18:55',dep:'20:00',stay:65,priority:100,must:true,query:'Zia parking Kos',desc:'Finał dnia: górska wioska, widok, szybka kolacja/deser. Wyjazd najpóźniej 20:00.',target:'parking w Zia',tip:'Ustaw alarm na 19:45: płacimy i zbieramy się. 20:00 to twardy wyjazd.',walkTitle:'Plan na miejscu — Zia do 20:00',walkTime:'60–65 min',walk:['Parking w Zia','Spacer główną uliczką','Punkt widokowy / zdjęcia','Szybka kolacja albo deser','19:45 płacimy, 20:00 wyjazd']},
+{n:'7',title:'🚗 Powrót / oddanie auta',kind:'MAIN',arr:'20:45',dep:'21:00',stay:15,priority:100,must:true,query:'Mitsis Ramira Beach Hotel Kos',desc:'Auto musi być oddane do 21:00. Plan daje około 15 min buforu.',target:'hotel / punkt oddania auta',tip:'Nie wyjeżdżaj z Zia po 20:00. Jeśli Google pokazuje korki, wyjedź wcześniej.',walkTitle:'Koniec dnia',walkTime:'5 min',walk:['Zaparkuj / oddaj auto','Zabierz rzeczy z auta','Sprawdź telefon i dokumenty','Koniec trasy']}
 ];
 
 const walkRoutes={
-'🏨 Mitsis Ramira / Psalidi':['Mitsis Ramira Beach Hotel Kos','Mitsis Ramira Beach Hotel parking Kos'],
-'♨️ Therma Beach':['Therma Beach parking Kos','Embros Therme Kos','Therma Beach viewpoint Kos'],
-'🏛️ Asklepion':['Asklepion Kos parking','Asklepion Kos entrance','Asklepion Kos upper terrace','Asklepion Kos'],
-'🌾 Traditional Windmill Antimachia':['Traditional Windmill of Antimachia parking Kos','Traditional Windmill of Antimachia Kos'],
-'🦚 Plaka Forest':['Plaka Forest parking Kos','Plaka Forest Kos'],
 '🏖️ Agios Stefanos + Kastri':['Agios Stefanos Beach parking Kos','Agios Stefanos Basilica Kos','Agios Stefanos Beach Kos','Kastri Island Kos viewpoint'],
-'🏝️ Camel Beach':['Camel Beach parking Kos','Camel Beach Kos','Camel Fish Restaurant Kos'],
-'🌊 Paradise Beach':['Paradise Beach parking Kos','Paradise Beach Kos','Paradise Beach Bar Kos'],
-'☕ Mylotopi Kefalos':['Mylotopi Kefalos Kos parking','Mylotopi Kefalos Kos','Mylotopi Cafe Bar Kefalos Kos viewpoint'],
+'🏝️ Camel Beach Viewpoint':['Camel Beach parking Kos','Camel Beach Kos viewpoint'],
 '🏰 Kefalos Castle Viewpoint':['Kefalos Castle Kos parking','Kefalos Castle Kos','Kefalos Castle viewpoint Kos'],
-'🌄 Zia — zachód + kolacja':['Zia parking Kos','Zia village Kos','Oromedon Restaurant Zia Kos','Zia sunset viewpoint Kos'],
+'☕ Mylotopi Kefalos':['Mylotopi Kefalos Kos parking','Mylotopi Kefalos Kos','Mylotopi Cafe Bar Kefalos Kos viewpoint'],
+'🌅 Limnionas Bay':['Limnionas Bay parking Kos','Limnionas Bay Kos','Limnionas Tavern Kos'],
+'🏚️ Paleo Pyli':['Paleo Pyli parking Kos','Paleo Pyli Kos ruins','Paleo Pyli viewpoint Kos'],
+'🌄 Zia — widok + szybka kolacja':['Zia parking Kos','Zia village Kos','Oromedon Restaurant Zia Kos','Zia sunset viewpoint Kos'],
 '🚗 Powrót / oddanie auta':['Zia parking Kos','Mitsis Ramira Beach Hotel Kos']
 };
 const foods={
-'🏨 Mitsis Ramira / Psalidi':[
- ['Kos Marina Cafe','kawa / szybki start','Kos Marina Cafe Kos'],['Agios Fokas Beach Club','napój po drodze do Therma','Agios Fokas Beach Club Kos']
-],
-'♨️ Therma Beach':[
- ['Agios Fokas Beach Club','najbliższa sensowna opcja po Therma','Agios Fokas Beach Club Kos'],['Mediterraneo Restaurant','spokojniejsza opcja przy wybrzeżu','Mediterraneo Restaurant Kos']
-],
-'🏛️ Asklepion':[
- ['Broadway Restaurant','najlepszy wybór na lunch, jeśli chcecie zjeść przed zachodem wyspy','Broadway Restaurant Kos'],['More Cafe Bar','kawa / deser po Asklepionie','More Cafe Bar Kos Town']
-],
-'🌾 Traditional Windmill Antimachia':[
- ['Traditional Cafe Antimachia','szybka kawa lokalnie','traditional cafe Antimachia Kos'],['Tam Tam Beach','lepszy postój jeśli jedziecie w stronę Kefalos','Tam Tam Beach Kos restaurant']
-],
-'🦚 Plaka Forest':[
- ['Tam Tam Beach','najlepsza opcja niedaleko trasy','Tam Tam Beach Kos restaurant'],['Kefalos restaurants','większy wybór po drodze dalej','restaurants Kefalos Kos']
-],
 '🏖️ Agios Stefanos + Kastri':[
- ['Antonios Restaurant','najlepszy wybór przy plaży','Antonios Restaurant Kefalos Kos'],['Hippocrates Restaurant','dobra alternatywa blisko plaży','Hippocrates Restaurant Kefalos Kos'],['Camel Fish Restaurant','ryby i owoce morza niedaleko','Camel Fish Restaurant Kos']
+ ['Antonios Restaurant','najlepszy wybór przy plaży, jeśli chcecie coś szybkiego','Antonios Restaurant Kefalos Kos'],['Hippocrates Restaurant','dobra alternatywa blisko plaży','Hippocrates Restaurant Kefalos Kos'],['Camel Fish Restaurant','ryby i owoce morza niedaleko Camel Beach','Camel Fish Restaurant Kos']
 ],
-'🏝️ Camel Beach':[
+'🏝️ Camel Beach Viewpoint':[
  ['Camel Fish Restaurant','najlepszy wybór przy tym punkcie','Camel Fish Restaurant Kos'],['Antonios Restaurant','bezpieczna alternatywa po plaży','Antonios Restaurant Kefalos Kos']
 ],
-'🌊 Paradise Beach':[
- ['Paradise Beach Bar','szybki napój / przekąska','Paradise Beach Kos beach bar'],['Camel Fish Restaurant','lepsze jedzenie niż typowy beach bar','Camel Fish Restaurant Kos']
+'🏰 Kefalos Castle Viewpoint':[
+ ['Mylotopi','najlepsza kawa/widok zaraz po zamku','Mylotopi Kefalos Kos'],['Maistrali Restaurant','ryby w Kefalos, jeśli chcecie konkretny posiłek','Maistrali Restaurant Kefalos Kos']
 ],
 '☕ Mylotopi Kefalos':[
  ['Mylotopi','kawa, deser i widok — najlepsze tutaj','Mylotopi Kefalos Kos'],['Maistrali Restaurant','ryby w Kefalos','Maistrali Restaurant Kefalos Kos'],['Faros Seaside','spokojna opcja nad morzem','Faros Seaside Restaurant Kefalos Kos']
 ],
-'🏰 Kefalos Castle Viewpoint':[
- ['Mylotopi','najbliżej i najlepszy widok','Mylotopi Kefalos Kos'],['Maistrali Restaurant','ryby po zejściu z punktu widokowego','Maistrali Restaurant Kefalos Kos']
+'🌅 Limnionas Bay':[
+ ['Limnionas Tavern','najlepsza opcja przy zatoce','Limnionas Tavern Kos'],['Maistrali Restaurant','lepszy wybór na pełny posiłek w Kefalos','Maistrali Restaurant Kefalos Kos']
 ],
-'🌄 Zia — zachód + kolacja':[
- ['Oromedon','najlepszy wybór na kolację i zachód — rezerwacja wskazana','Oromedon Restaurant Zia Kos'],['Taverna Olympia','tradycyjna alternatywa','Taverna Olympia Zia Kos'],['The Watermill of Zia','kawa / deser / klimat','Watermill of Zia Kos']
+'🏚️ Paleo Pyli':[
+ ['Oromedon','lepiej zjeść później w Zia','Oromedon Restaurant Zia Kos'],['Taverna Olympia','alternatywa w Zia','Taverna Olympia Zia Kos']
+],
+'🌄 Zia — widok + szybka kolacja':[
+ ['Oromedon','najlepszy wybór na kolację i widok — rezerwacja wskazana','Oromedon Restaurant Zia Kos'],['Taverna Olympia','tradycyjna alternatywa','Taverna Olympia Zia Kos'],['The Watermill of Zia','kawa / deser / klimat','Watermill of Zia Kos']
 ],
 '🚗 Powrót / oddanie auta':[
  ['Mitsis Ramira Bar','po oddaniu auta, jeśli czynne','Mitsis Ramira Beach Hotel Kos bar']
@@ -117,7 +99,7 @@ function smartSkips(delay,now){
         if(delay>15 && s.priority<45) skip.add(i);   // najsłabsze bonusy
         if(delay>25 && s.priority<65) skip.add(i);   // Camel / Paradise / Kefalos
         if(delay>40 && s.priority<80) skip.add(i);   // prawie wszystkie bonusy
-        if(now>mins('17:00')) skip.add(i);           // po 17:00 żadnych bonusów
+        if(now>mins('18:15')) skip.add(i);           // po 18:15 żadnych bonusów
       }
     }
   });
@@ -162,9 +144,9 @@ function update(){
  document.getElementById('mainRouteTop').href=mapsDir(main);
  document.getElementById('routeNav').href=mapsDir(remaining.length?remaining:main);
  document.getElementById('nextBtn').href=mapsSearch(stops[next].query);
- document.getElementById('bar').style.width=Math.max(0,Math.min(100,(now-mins('10:00'))/(mins('21:00')-mins('10:00'))*100))+'%';
+ document.getElementById('bar').style.width=Math.max(0,Math.min(100,(now-mins('14:00'))/(mins('21:00')-mins('14:00'))*100))+'%';
  let mood='✅ Idziecie zgodnie z planem';
- if(now<mins('10:00')) mood='🟦 Plan startuje o 10:00';
+ if(now<mins('14:00')) mood='🟦 Plan LIVE startuje o 14:00';
  else if(delay>60) mood='🚨 Bardzo duże opóźnienie';
  else if(delay>35) mood='🚨 Duże opóźnienie';
  else if(delay>15) mood='⚠️ Opóźnienie';
@@ -172,7 +154,7 @@ function update(){
  const phase = now>=mins(stops[next].arr)&&now<=mins(stops[next].dep) ? 'teraz na miejscu: ' : 'następny punkt: ';
  document.getElementById('status').textContent=mood+' — '+phase+stops[next].title;
  const toCar=mins('21:00')-now;
- const toZia=mins('17:50')-now;
+ const toZia=mins('18:55')-now;
  const skipped=[...skip].filter(i=>!visited.has(i)&&!stops[i].must).map(i=>stops[i].title.replace(/^[^ ]+ /,''));
  const delayLabel = delay<0 ? `Zapas: ${Math.abs(delay)} min` : delay===0 ? 'Na czas' : `Opóźnienie: ${delay} min`;
  document.getElementById('chips').innerHTML=`<span class="chip ${delay>30?'bad':delay>10?'warn':'good'}">${delayLabel}</span><span class="chip">Do Zia: ${toZia>0?toZia+' min':'teraz / po czasie'}</span><span class="chip">Do oddania auta: ${toCar} min</span><span class="chip">Tryb: ${mode==='smart'?'SMART':mode==='full'?'Cała trasa':'Tylko MAIN'}</span>`;
@@ -182,9 +164,9 @@ function update(){
  else if(delay>15) dec='Jest opóźnienie. Smart zacznie usuwać słabsze bonusy, ale główne punkty zostają.';
  else if(delay<0) dec='Macie zapas czasu. Smart może zostawić bonusy po trasie, jeśli dalej będziecie punktualnie.';
  if(mode==='full') dec='Tryb Cała trasa: bonusy nie są automatycznie usuwane. Używaj tego tylko, gdy naprawdę macie zapas czasu.';
- if(mode==='main') dec='Tryb Tylko MAIN: wszystkie bonusy są ukryte z trasy. To najbezpieczniejsza opcja, gdy chcecie spokojnie zdążyć do Zia i oddać auto do 21:00.';
+ if(mode==='main') dec='Tryb Tylko MAIN: ukrywa Camel, Limnionas i Paleo Pyli. To najbezpieczniejsza opcja, żeby zdążyć do Zia i oddać auto do 21:00.';
  if(mode==='smart'&&skipped.length) dec='Smart obecnie pomija: <b>'+skipped.join(', ')+'</b>. Dzięki temu zostają najważniejsze punkty, Zia i bezpieczny powrót do 21:00.';
- if(now>mins('18:45')) dec='Jest po 17:00. Nie dokładamy już bonusów. Priorytet: Mylotopi → Zia → powrót do 21:00.';
+ if(now>mins('18:15')) dec='Jest po 18:15. Nie dokładamy już bonusów. Priorytet: Zia → wyjazd najpóźniej 20:00 → oddanie auta do 21:00.';
  document.getElementById('decision').innerHTML=dec;
 }
 render();setInterval(update,60000);
